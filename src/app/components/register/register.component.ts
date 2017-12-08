@@ -12,7 +12,10 @@ export class RegisterComponent {
   public model: RegisterModel = {
     username: '',
     password: '',
-    email: ''
+    email: '',
+    trades: [],
+    balance: 0,
+    allocated: 0
   };
   public registeredUser: string;
   public registerSuccess: boolean;

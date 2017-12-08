@@ -25,18 +25,31 @@ export class CryptoService {
       }
     });
   }
-  postTrade(trade) {
-    let user;
+  postTrade(trade, amount) {
     this.getUser()
       .subscribe(currentUser => {
-      user = currentUser;
-    });
-    user.trades.push(trade);
-    return this.http.put(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), {
-        'trades': user.trades
+        currentUser['trades'].push(trade);
+        currentUser['balance'] = currentUser['balance'] - amount;
+        currentUser['allocated'] = +currentUser['allocated'] + amount;
+        this.http.put(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), {
+          'trades': currentUser['trades'],
+          'balance': currentUser['balance'],
+          'allocated': currentUser['allocated']
+        }, {
+          headers: {
+            'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+          }
+        }).subscribe(data => {
+          // TODO: notify trade success
+          console.log(data);
+        });
     });
   }
   getUser() {
-    return this.http.get(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'));
+    return this.http.get(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), {
+      headers: {
+        'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+      }
+    });
   }
 }

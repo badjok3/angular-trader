@@ -11,7 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { DetailsComponent } from './components/details/details.component';
-
+import { TradeComponent } from './components/trade/trade.component';
 import { CryptoService } from './services/crypto.service';
 import { AuthorizationService } from './services/authorization.service';
 
@@ -24,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'details/:name', component: DetailsComponent },
+  { path: 'trade/:name', component: TradeComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    DetailsComponent
+    DetailsComponent,
+    TradeComponent
   ],
   imports: [
     NgbModule,

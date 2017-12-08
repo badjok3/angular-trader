@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CryptoService } from '../../services/crypto.service';
+import { CryptoModel } from '../../models/crypto';
 
 @Component({
   selector: 'app-details',
@@ -8,7 +9,7 @@ import { CryptoService } from '../../services/crypto.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  crypto = {};
+  crypto: CryptoModel;
 
   constructor(private router: Router, private cryptoService: CryptoService) { }
 
