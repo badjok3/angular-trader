@@ -5,7 +5,7 @@
     <span>{{crypto.buy}}</span>
   </div>
   <strong>AMOUNT</strong>
-  <input type="number" [(ngModel)]="currentAmount" #amount="ngModel" required />$
+  <input type="number" [(ngModel)]="currentAmount" required />$
   <button class="btn btn-primary" (click)="postTrade()">Trade</button>
   <div [hidden]="insufficientFunds" class="alert alert-danger">
       You need to deposit {{currentAmount - userBalance}}$ in order to make this trade!

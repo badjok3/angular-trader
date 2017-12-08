@@ -9,7 +9,7 @@ import { CryptoModel } from '../../models/crypto';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  crypto: CryptoModel;
+  public crypto: CryptoModel;
 
   constructor(private router: Router, private cryptoService: CryptoService) { }
 

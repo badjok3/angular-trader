@@ -9,7 +9,7 @@ import { CryptoModel } from '../../models/crypto';
   styleUrls: ['./trade.component.css']
 })
 export class TradeComponent implements OnInit {
-  crypto: CryptoModel;
+  public crypto: CryptoModel;
   public currentAmount: number;
   public insufficientFunds = true;
   public userBalance: number;

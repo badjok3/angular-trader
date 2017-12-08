@@ -8,7 +8,7 @@ import { CryptoModel } from '../../models/crypto';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  cryptos: CryptoModel[];
+  public cryptos: CryptoModel[];
 
   constructor(private cryptoRequester: CryptoService) { }
 

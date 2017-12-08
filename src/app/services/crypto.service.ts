@@ -31,11 +31,7 @@ export class CryptoService {
         currentUser['trades'].push(trade);
         currentUser['balance'] = currentUser['balance'] - amount;
         currentUser['allocated'] = +currentUser['allocated'] + amount;
-        this.http.put(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), {
-          'trades': currentUser['trades'],
-          'balance': currentUser['balance'],
-          'allocated': currentUser['allocated']
-        }, {
+        this.http.put(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), currentUser, {
           headers: {
             'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
           }
@@ -44,6 +40,21 @@ export class CryptoService {
           console.log(data);
         });
     });
+  }
+  makeDeposit(amount) {
+    this.getUser()
+      .subscribe(currentUser => {
+        currentUser['balance'] += amount;
+
+        this.http.put(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), currentUser, {
+          headers: {
+            'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+          }
+        }).subscribe(data => {
+          // TODO: notify deposit success
+          console.log(data);
+        });
+      });
   }
   getUser() {
     return this.http.get(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), {

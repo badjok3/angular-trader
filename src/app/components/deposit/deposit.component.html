@@ -1,0 +1,5 @@
+<div class="deposit">
+  <span>Current Balance:</span>{{currentBalance}}
+  <input type="number" [(ngModel)]="deposit">
+  <button class="btn btn-primary" (click)="makeDeposit(deposit)">Deposit</button>
+</div>
