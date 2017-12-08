@@ -1,0 +1,15 @@
+<div class="crypto-content" *ngFor="let crypto of cryptos">
+  <a routerLink="/details/{{crypto.name}}">
+    <img src={{crypto.imageUrl}} class="crypto-img">
+  </a>
+  <span class="crypto-name"><strong>{{crypto.name | uppercase}}</strong></span>
+  <span class="crypto-name">{{crypto.portfolioName}}</span>
+  <a routerLink="/details/{{crypto.name}}">
+    <span class="crypto-price"><button>S</button>{{crypto.sell}}</span>
+  </a>
+  <a routerLink="/details/{{crypto.name}}">
+    <span class="crypto-price"><button>B</button>{{crypto.buy}}</span>
+  </a>
+
+</div>
+

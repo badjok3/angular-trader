@@ -1,0 +1,49 @@
+<div class="container">
+  <h2>Register</h2>
+  <form (ngSubmit)="userRegister()" #registerForm="ngForm">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email"
+             required
+             [(ngModel)]="model.email"
+             name="email"
+             #email="ngModel">
+      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+        E-mail is required!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username"
+             required
+             [(ngModel)]="model.username"
+             name="username"
+             #username="ngModel">
+      <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+        Username is required!
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password"
+             required
+             [(ngModel)]="model.password"
+             name="password"
+             #password="ngModel">
+      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+        Password is required!
+      </div>
+    </div>
+
+    <button [disabled]="!registerForm.form.valid" type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <div *ngIf="registerSuccess" class="alert alert-success">
+    Successfully Registered {{registeredUser}}!
+  </div>
+  <div *ngIf="registerFail" class="alert alert-danger">
+    User already exists!
+  </div>
+</div>
