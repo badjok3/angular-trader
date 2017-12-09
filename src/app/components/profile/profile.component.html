@@ -1,0 +1,17 @@
+<div class="profile" *ngIf="user">
+  <img src={{user.imageUrl}} alt="profileImg"/>
+  <span>{{user.username}}</span>
+  <ul>
+    <li *ngFor="let trade of user.trades">
+      <img style="max-width: 70px" src={{trade.cryptoImg}}/>
+      <span>{{cryptoName | uppercase}}</span>
+      <span>Bought at: </span>{{trade.cryptoPrice}}
+      <span>Units: </span>{{trade.amount / trade.cryptoPrice}}
+      <span>Current price:</span>
+    </li>
+  </ul>
+  <span>Available: </span>{{user.available}}
+  <span>Allocated: </span>{{user.allocated}}
+  <span>Profit: </span>{{profit}}
+  <span>Equity: </span>{{user.available + user.allocated + profit}}
+</div>

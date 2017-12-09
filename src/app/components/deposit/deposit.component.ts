@@ -19,7 +19,7 @@ export class DepositComponent implements OnInit {
   getBalance() {
     this.cryptoService.getUser()
       .subscribe(user => {
-        this.currentBalance = user['balance'];
+        this.currentBalance = user['available'];
       });
   }
 

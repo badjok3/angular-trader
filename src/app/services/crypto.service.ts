@@ -29,7 +29,7 @@ export class CryptoService {
     this.getUser()
       .subscribe(currentUser => {
         currentUser['trades'].push(trade);
-        currentUser['balance'] = currentUser['balance'] - amount;
+        currentUser['available'] = currentUser['available'] - amount;
         currentUser['allocated'] = +currentUser['allocated'] + amount;
         this.http.put(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), currentUser, {
           headers: {
@@ -44,7 +44,7 @@ export class CryptoService {
   makeDeposit(amount) {
     this.getUser()
       .subscribe(currentUser => {
-        currentUser['balance'] += amount;
+        currentUser['available'] += amount;
 
         this.http.put(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), currentUser, {
           headers: {
@@ -60,6 +60,13 @@ export class CryptoService {
     return this.http.get(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), {
       headers: {
         'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+      }
+    });
+  }
+  getCryptoById(id) {
+    return this.http.get(baseUrl + '/appdata/' + appKey + '/cryptos/' + id, {
+      headers: {
+        Authorization: 'Kinvey ' + localStorage.getItem('authtoken')
       }
     });
   }

@@ -30,7 +30,7 @@ export class TradeComponent implements OnInit {
   postTrade(): void {
     this.cryptoService.getUser()
       .subscribe(currentUser => {
-        this.userBalance = currentUser['balance'];
+        this.userBalance = currentUser['available'];
 
         if (this.userBalance < this.currentAmount) {
           this.insufficientFunds = false;
@@ -38,7 +38,9 @@ export class TradeComponent implements OnInit {
         }
         const trade = {
           'cryptoId': this.crypto['_id'],
-          'cryptoPrice': this.crypto.sell,
+          'cryptoImg': this.crypto.imageUrl,
+          'cryptoName': this.crypto.name,
+          'cryptoPrice': this.crypto.buy,
           'amount': this.currentAmount
         };
 

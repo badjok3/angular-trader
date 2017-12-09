@@ -5,6 +5,7 @@ export class RegisterModel {
     public email: string,
     public trades: Array<object>,
     public balance: number,
-    public allocated: number
+    public allocated: number,
+    public imageUrl: string
   ) { }
 }
