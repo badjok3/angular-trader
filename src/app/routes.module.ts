@@ -14,6 +14,8 @@ import { DetailsComponent } from './components/details/details.component';
 import { TradeComponent } from './components/trade/trade.component';
 import { DepositComponent } from './components/deposit/deposit.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { WithdrawComponent } from './components/withdraw/withdraw.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 import { CryptoService } from './services/crypto.service';
 import { AuthorizationService } from './services/authorization.service';
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'trade/:name', component: TradeComponent },
   { path: 'deposit', component: DepositComponent },
   { path: 'profile/:username', component: ProfileComponent },
+  { path: 'withdraw', component: WithdrawComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -43,7 +46,9 @@ const appRoutes: Routes = [
     DetailsComponent,
     TradeComponent,
     DepositComponent,
-    ProfileComponent
+    ProfileComponent,
+    WithdrawComponent,
+    PostsComponent
   ],
   imports: [
     NgbModule,

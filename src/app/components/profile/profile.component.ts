@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   public user: object;
-  public profit: number = 0;
+  public profit = 0;
 
   constructor(private router: Router, private cryptoService: CryptoService) {
   }
@@ -25,11 +25,12 @@ export class ProfileComponent implements OnInit {
         for (const trade of currentUser['trades']) {
           this.cryptoService.getCryptoById(trade['cryptoId'])
             .subscribe(currentCrypto => {
-              // if (currentCrypto['sell'] === trade['cryptoPrice']) {
-                let diff = (currentCrypto['sell'] * trade.amount) - (trade['cryptoPrice'] * trade.amount);
-                let percent = diff / currentCrypto['sell'] * 100.0;
-                let profit = trade.amount * percent / 100;
-                console.log(profit);
+                let diff = currentCrypto['sell'] - trade['cryptoPrice'];
+                let percent = diff / currentCrypto['sell'] * 100;
+                let profit = trade['amount'] / (percent * trade['amount'] / 100);
+                trade['currentPrice'] = currentCrypto['sell'];
+                trade['profit'] = profit;
+                this.profit = this.profit + profit;
             });
         }
       });

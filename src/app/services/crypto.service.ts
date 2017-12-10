@@ -56,6 +56,28 @@ export class CryptoService {
         });
       });
   }
+  makeWithdraw(amount) {
+    this.getUser()
+      .subscribe(currentUser => {
+        currentUser['available'] -= amount;
+
+        this.http.put(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), currentUser, {
+          headers: {
+            'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+          }
+        }).subscribe(data => {
+          // TODO: notify deposit success
+          console.log(data);
+        });
+      });
+  }
+  getCryptoPosts(id) {
+    return this.http.get(baseUrl + '/appdata/' + appKey + `/posts?={"cryptoId": "${id}"}`, {
+      headers: {
+        'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+      }
+    });
+  }
   getUser() {
     return this.http.get(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), {
       headers: {

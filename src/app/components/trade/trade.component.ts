@@ -36,12 +36,17 @@ export class TradeComponent implements OnInit {
           this.insufficientFunds = false;
           return;
         }
+        let diff = (this.crypto['sell'] * this.currentAmount) - (this.crypto['buy'] * this.currentAmount);
+        let percent = diff / this.crypto['sell'] * 100.0;
+        let profit = this.currentAmount * (percent / 100.0);
         const trade = {
           'cryptoId': this.crypto['_id'],
           'cryptoImg': this.crypto.imageUrl,
           'cryptoName': this.crypto.name,
           'cryptoPrice': this.crypto.buy,
-          'amount': this.currentAmount
+          'currentPrice': this.crypto.sell,
+          'amount': this.currentAmount,
+          'profit': profit,
         };
 
         this.cryptoService.postTrade(trade, this.currentAmount);
