@@ -71,8 +71,36 @@ export class CryptoService {
         });
       });
   }
+  postCryptoPost(post) {
+    return this.http.post(baseUrl + '/appdata/' + appKey + '/posts', post, {
+      headers: {
+        'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+      }
+    });
+  }
   getCryptoPosts(id) {
-    return this.http.get(baseUrl + '/appdata/' + appKey + `/posts?={"cryptoId": "${id}"}`, {
+    return this.http.get(baseUrl + '/appdata/' + appKey + `/posts?query={"cryptoId": "${id}"}`, {
+      headers: {
+        'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+      }
+    });
+  }
+  getComments(postId) {
+    return this.http.get(baseUrl + '/appdata/' + appKey + `/comments?query={"postId": "${postId}"}`, {
+      headers: {
+        'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+      }
+    });
+  }
+  postComment(comment) {
+    return this.http.post(baseUrl + '/appdata/' + appKey + '/comments', comment, {
+      headers: {
+        'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+      }
+    });
+  }
+  getUserProfile(username) {
+    return this.http.get(baseUrl + `/user/` + appKey + `/?query={"username":"${username}"}`, {
       headers: {
         'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
       }

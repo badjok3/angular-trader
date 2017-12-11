@@ -1,0 +1,9 @@
+<div class="comments">
+  <textarea [(ngModel)]="model.content" name="content" placeholder="What do you think about this post?"></textarea>
+  <button type="submit" class="btn btn-success" (click)="postComment()">Post</button>
+  <div *ngFor="let comment of comments">
+    {{comment.content}}
+    By: {{comment.author}}
+    Date created: {{comment.date | date}}
+  </div>
+</div>

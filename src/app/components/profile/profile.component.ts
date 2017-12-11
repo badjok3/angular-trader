@@ -19,18 +19,20 @@ export class ProfileComponent implements OnInit {
   }
 
   loadUser() {
-    this.cryptoService.getUser()
+    const user = this.router.url.substr(this.router.url.lastIndexOf('/') + 1, this.router.url.length);
+    this.cryptoService.getUserProfile(user)
       .subscribe(currentUser => {
+        currentUser = currentUser[0]
         this.user = currentUser;
         for (const trade of currentUser['trades']) {
           this.cryptoService.getCryptoById(trade['cryptoId'])
             .subscribe(currentCrypto => {
                 let diff = currentCrypto['sell'] - trade['cryptoPrice'];
                 let percent = diff / currentCrypto['sell'] * 100;
-                let profit = trade['amount'] / (percent * trade['amount'] / 100);
+                let profit = trade['amount'] * percent / 100;
                 trade['currentPrice'] = currentCrypto['sell'];
-                trade['profit'] = profit;
-                this.profit = this.profit + profit;
+                trade['profit'] = profit.toFixed(2);
+                this.profit = +(this.profit + profit).toFixed(2);
             });
         }
       });

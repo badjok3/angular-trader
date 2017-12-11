@@ -4,16 +4,15 @@
   <ul>
     <li *ngFor="let trade of user.trades">
       <img style="max-width: 70px" src={{trade.cryptoImg}}/>
-      <span>{{cryptoName | uppercase}}</span>
-      <span>Bought at: </span>{{trade.cryptoPrice}}
-      <span>Amount: </span>{{trade.amount}}
-      <span>Units: </span>{{trade.amount / trade.cryptoPrice}}
-      <span>Current price: </span>{{trade.currentPrice}}
-      <span>Profit: </span>{{trade.profit}}
+      <strong>{{cryptoName | uppercase}}</strong>
+      <strong>Bought at: </strong>{{trade.cryptoPrice}}
+      <strong>Amount: </strong>{{trade.amount}}
+      <strong>Units: </strong>{{trade.amount / trade.cryptoPrice}}
+      <strong>Profit: </strong><span [class.red]="trade.profit < 0" [class.green]="trade.profit >= 0">{{trade.profit}}</span>
     </li>
   </ul>
-  <span>Available: </span>{{user.available}}
-  <span>Allocated: </span>{{user.allocated}}
-  <span>Profit: </span>{{profit}}
-  <span>Equity: </span>{{user.available + user.allocated + profit}}
+  <strong>Available: </strong>{{user.available}}
+  <strong>Allocated: </strong>{{user.allocated}}
+  <strong>Profit: </strong><span [class.red]="profit < 0" [class.green]="profit >= 0">{{profit}}</span>
+  <strong>Equity: </strong>{{user.available + user.allocated + profit}}
 </div>

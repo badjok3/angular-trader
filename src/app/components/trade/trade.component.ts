@@ -11,7 +11,7 @@ import { CryptoModel } from '../../models/crypto';
 export class TradeComponent implements OnInit {
   public crypto: CryptoModel;
   public currentAmount: number;
-  public insufficientFunds = true;
+  public insufficientFunds = false;
   public userBalance: number;
   constructor(private router: Router, private cryptoService: CryptoService) { }
 
@@ -33,9 +33,12 @@ export class TradeComponent implements OnInit {
         this.userBalance = currentUser['available'];
 
         if (this.userBalance < this.currentAmount) {
-          this.insufficientFunds = false;
+          this.insufficientFunds = true;
           return;
+        } else {
+          this.insufficientFunds = false;
         }
+
         let diff = (this.crypto['sell'] * this.currentAmount) - (this.crypto['buy'] * this.currentAmount);
         let percent = diff / this.crypto['sell'] * 100.0;
         let profit = this.currentAmount * (percent / 100.0);
