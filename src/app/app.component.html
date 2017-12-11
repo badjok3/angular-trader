@@ -8,9 +8,9 @@
 
   <section class="navbar-toggler-right">
     <div class="wrapper-d">
-      <div id="dd" class="wrapper-dropdown-5">{{user}}
+      <div id="dd" class="wrapper-dropdown-5">{{getCurrentUser()}}
         <ul class="dropdown">
-          <li><a routerLink="/profile/{{user}}"><i class="icon-user"></i>Profile</a></li>
+          <li><a routerLink="/profile/{{getCurrentUser()}}"><i class="icon-user"></i>Profile</a></li>
           <li><a routerLink="/withdraw"><i class="icon-cog"></i>Withdraw Funds</a></li>
           <li><a routerLink="/deposit"><i class="icon-cog"></i>Deposit Funds</a></li>
           <li><a routerLink="/logout"><i class="icon-remove"></i>Logout</a></li>

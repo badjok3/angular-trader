@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadCryptos();
     this.isAdmin = this.authService.isAdmin();
+    console.log(this.authService.isAdmin());
   }
 
   ngOnDestroy() {

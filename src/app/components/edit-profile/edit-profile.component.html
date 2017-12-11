@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Edit profile</h2>
+  <form (ngSubmit)="updateUser()" #editForm="ngForm">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email"
+             required
+             [(ngModel)]="model.email"
+             name="email"
+             #email="ngModel">
+      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+        E-mail is required!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username"
+             required
+             [(ngModel)]="model.username"
+             name="username"
+             #username="ngModel">
+      <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+        Username is required!
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="imageUrl">Profile Picture URL</label>
+      <input type="text" class="form-control" id="imageUrl"
+             required
+             [(ngModel)]="model.imageUrl"
+             name="imageUrl"
+             #imageUrl="ngModel">
+    </div>
+
+    <button [disabled]="!editForm.form.valid" type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <div *ngIf="editSuccess" class="alert alert-success">
+    Successfully Updated {{model.username}}!
+  </div>
+</div>

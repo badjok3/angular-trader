@@ -6,11 +6,10 @@ import { AuthorizationService } from './services/authorization.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  user = '';
+export class AppComponent {
   constructor(private auth: AuthorizationService) { }
 
-  ngOnInit() {
-    this.user = localStorage.getItem('username');
+  getCurrentUser() {
+    return localStorage.getItem('username');
   }
 }

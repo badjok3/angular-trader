@@ -134,6 +134,13 @@ export class CryptoService {
       }
     });
   }
+  updateUser(user) {
+      return this.http.put(baseUrl + '/user/' + appKey + '/' + localStorage.getItem('userId'), user, {
+          headers: {
+            'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+          }
+      });
+  }
   getCryptoById(id) {
     return this.http.get(baseUrl + '/appdata/' + appKey + '/cryptos/' + id, {
       headers: {

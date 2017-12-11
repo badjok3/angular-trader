@@ -14,7 +14,7 @@ export class RegisterComponent {
     password: '',
     email: '',
     trades: [],
-    balance: 0,
+    available: 0,
     allocated: 0,
     imageUrl: 'https://cdn2.f-cdn.com/ppic/85814928/logo/24833000/Cri6V/profile_logo_.png'
   };
