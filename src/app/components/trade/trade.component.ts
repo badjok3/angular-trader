@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CryptoService } from '../../services/crypto.service';
 import { Router } from '@angular/router';
 import { CryptoModel } from '../../models/crypto';
+
+import { CryptoService } from '../../services/crypto.service';
+import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-trade',
@@ -9,11 +11,17 @@ import { CryptoModel } from '../../models/crypto';
   styleUrls: ['./trade.component.css']
 })
 export class TradeComponent implements OnInit {
-  public crypto: CryptoModel;
-  public currentAmount: number;
-  public insufficientFunds = false;
-  public userBalance: number;
-  constructor(private router: Router, private cryptoService: CryptoService) { }
+  crypto: CryptoModel;
+  currentAmount: number;
+  insufficientFunds = false;
+  userBalance: number;
+  notification: string;
+
+  constructor(
+    private router: Router,
+    private cryptoService: CryptoService,
+    private notificationsService: NotificationsService
+  ) { }
 
   ngOnInit() {
     this.loadDetails();
@@ -39,9 +47,9 @@ export class TradeComponent implements OnInit {
           this.insufficientFunds = false;
         }
 
-        let diff = (this.crypto['sell'] * this.currentAmount) - (this.crypto['buy'] * this.currentAmount);
-        let percent = diff / this.crypto['sell'] * 100.0;
-        let profit = this.currentAmount * (percent / 100.0);
+        const diff = (this.crypto['sell'] * this.currentAmount) - (this.crypto['buy'] * this.currentAmount);
+        const percent = diff / this.crypto['sell'] * 100.0;
+        const profit = this.currentAmount * (percent / 100.0);
         const trade = {
           'cryptoId': this.crypto['_id'],
           'cryptoImg': this.crypto.imageUrl,
@@ -51,10 +59,15 @@ export class TradeComponent implements OnInit {
           'amount': this.currentAmount,
           'profit': profit,
         };
+        currentUser['trades'].push(trade);
+        currentUser['available'] = currentUser['available'] - this.currentAmount;
+        currentUser['allocated'] = +currentUser['allocated'] + this.currentAmount;
 
-        this.cryptoService.postTrade(trade, this.currentAmount);
-        // TODO: display success message
-        this.router.navigate(['/details/' + this.crypto.name]);
+        this.cryptoService.postTrade(trade, this.currentAmount, currentUser)
+          .subscribe(data => {
+            this.notificationsService.notify(`Opened ${trade.cryptoName.toUpperCase()} trade at ${trade.currentPrice}`);
+            this.router.navigate(['/details/' + this.crypto.name]);
+          });
       });
   }
 }

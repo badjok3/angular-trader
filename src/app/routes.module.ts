@@ -1,3 +1,4 @@
+// Modules
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -5,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+// Components
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LoginComponent } from './components/login/login.component';
@@ -18,9 +20,12 @@ import { WithdrawComponent } from './components/withdraw/withdraw.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { CommentComponent } from './components/comment/comment.component';
 
+// Services
 import { CryptoService } from './services/crypto.service';
 import { AuthorizationService } from './services/authorization.service';
+import { NotificationsService } from './services/notifications.service';
 
+// Gurads
 import { AuthGuard } from './guards/auth.guard.service';
 
 const appRoutes: Routes = [
@@ -62,6 +67,7 @@ const appRoutes: Routes = [
   providers: [
     CryptoService,
     AuthorizationService,
+    NotificationsService,
     AuthGuard
   ],
   exports: [ RouterModule ]

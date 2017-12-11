@@ -1,3 +1,6 @@
+<div [hidden]="notification" (click)="hideNotification()">
+  <strong>{{notification}}</strong>
+</div>
 <div class="details" *ngIf="crypto">
   <img src={{crypto.imageUrl}} alt="crypto icon">
   <strong>{{crypto.name}}</strong>|<span>{{crypto.portfolioName}}</span>
