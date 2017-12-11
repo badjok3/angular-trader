@@ -58,14 +58,8 @@ export class AuthorizationService {
     return authtoken === this.currentAuthtoken;
   }
 
-  isAdmin(): boolean {
-    let admin;
-    this.cryptoService.getUser()
-      .subscribe(user => {
-          return user['_kmd']['roles'] ? admin = true : admin = false;
-      });
-
-    return admin;
+  isAdmin(user): boolean {
+    return !!user['_kmd']['roles'];
   }
 
   get authtoken() {

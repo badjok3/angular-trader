@@ -30,8 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadCryptos();
-    this.isAdmin = this.authService.isAdmin();
-    console.log(this.authService.isAdmin());
+    this.adminCheck();
   }
 
   ngOnDestroy() {
@@ -42,6 +41,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.cryptoService.getAllCryptos()
       .subscribe(data => {
         this.cryptos = data;
+      });
+  }
+  adminCheck(): void {
+    this.cryptoService.getUser()
+      .subscribe(user => {
+        this.isAdmin = this.authService.isAdmin(user)
       });
   }
 }

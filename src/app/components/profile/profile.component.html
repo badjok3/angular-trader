@@ -1,6 +1,7 @@
 <div class="profile" *ngIf="user">
   <img src={{user.imageUrl}} alt="profileImg"/>
   <span>{{user.username}}</span>
+  <button *ngIf="canEdit" routerLink="/edit/{{user.username}}">&#9998;</button>
   <ul>
     <li *ngFor="let trade of user.trades">
       <img style="max-width: 70px" src={{trade.cryptoImg}}/>

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
   public user: object;
   public profit = 0;
-
+  public canEdit: boolean;
   constructor(private router: Router, private cryptoService: CryptoService) {
   }
 
@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
       .subscribe(currentUser => {
         currentUser = currentUser[0]
         this.user = currentUser;
+        this.canEdit = (currentUser['username'] === localStorage.getItem('username'));
         for (const trade of currentUser['trades']) {
           this.cryptoService.getCryptoById(trade['cryptoId'])
             .subscribe(currentCrypto => {

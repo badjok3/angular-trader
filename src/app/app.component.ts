@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthorizationService } from './services/authorization.service';
 
 @Component({
@@ -7,7 +7,9 @@ import { AuthorizationService } from './services/authorization.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   constructor(private auth: AuthorizationService) { }
+
 
   getCurrentUser() {
     return localStorage.getItem('username');

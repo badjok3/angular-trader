@@ -13,13 +13,9 @@ import { Router } from '@angular/router';
 })
 export class EditProfileComponent implements OnInit {
 
-  public model: RegisterModel = {
+  public model: any = {
     username: '',
-    password: '',
     email: '',
-    trades: [],
-    balance: 0,
-    allocated: 0,
     imageUrl: 'https://cdn2.f-cdn.com/ppic/85814928/logo/24833000/Cri6V/profile_logo_.png'
   };
   public editSuccess: boolean;
@@ -37,7 +33,7 @@ export class EditProfileComponent implements OnInit {
   loadUser() {
     this.cryptoService.getUser()
       .subscribe(user => {
-        this.model = user[0];
+        this.model = user;
       });
   }
 

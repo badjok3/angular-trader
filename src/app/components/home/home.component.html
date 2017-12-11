@@ -14,7 +14,7 @@
     <span class="crypto-price"><button>B</button>{{crypto.buy}}</span>
   </a>
 </div>
-<div [hidden]="authService.isAdmin()">
-  <button routerLink="/create" class="btn btn-primary">Add new crypto</button>
+<div [hidden]="!isAdmin">
+  <button routerLink="/create" class="btn btn-primary">Add new crypto-currency</button>
 </div>
 
