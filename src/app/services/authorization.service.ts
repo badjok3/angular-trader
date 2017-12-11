@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { CryptoService } from './crypto.service';
 
 // Models
 import { RegisterModel } from '../models/register';
@@ -17,7 +18,8 @@ export class AuthorizationService {
   private currentAuthtoken: string;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private cryptoService: CryptoService
   ) { }
 
   login(loginModel: LoginModel) {
@@ -54,6 +56,16 @@ export class AuthorizationService {
     const authtoken: string = localStorage.getItem('authtoken');
 
     return authtoken === this.currentAuthtoken;
+  }
+
+  isAdmin(): boolean {
+    let admin;
+    this.cryptoService.getUser()
+      .subscribe(user => {
+          return user['_kmd']['roles'] ? admin = true : admin = false;
+      });
+
+    return admin;
   }
 
   get authtoken() {

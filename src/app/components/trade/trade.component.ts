@@ -12,9 +12,8 @@ import { NotificationsService } from '../../services/notifications.service';
 })
 export class TradeComponent implements OnInit {
   crypto: CryptoModel;
-  currentAmount: number;
-  insufficientFunds = false;
-  userBalance: number;
+  currentAmount = 0;
+  userBalance = 0;
   notification: string;
 
   constructor(
@@ -32,6 +31,10 @@ export class TradeComponent implements OnInit {
     this.cryptoService.getCryptoDetails(currentCrypto)
       .subscribe(coin => {
         this.crypto = coin[0];
+        this.cryptoService.getUser()
+          .subscribe(currentUser => {
+            this.userBalance = currentUser['available'];
+          });
       });
   }
 
@@ -39,13 +42,6 @@ export class TradeComponent implements OnInit {
     this.cryptoService.getUser()
       .subscribe(currentUser => {
         this.userBalance = currentUser['available'];
-
-        if (this.userBalance < this.currentAmount) {
-          this.insufficientFunds = true;
-          return;
-        } else {
-          this.insufficientFunds = false;
-        }
 
         const diff = (this.crypto['sell'] * this.currentAmount) - (this.crypto['buy'] * this.currentAmount);
         const percent = diff / this.crypto['sell'] * 100.0;

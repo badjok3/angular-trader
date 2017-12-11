@@ -1,3 +1,6 @@
+<div [hidden]="notification" (click)="hideNotification()">
+  {{notification}}
+</div>
 <div class="crypto-content" *ngFor="let crypto of cryptos">
   <a routerLink="/details/{{crypto.name}}">
     <img src={{crypto.imageUrl}} class="crypto-img">
@@ -10,5 +13,8 @@
   <a routerLink="/trade/{{crypto.name}}">
     <span class="crypto-price"><button>B</button>{{crypto.buy}}</span>
   </a>
+</div>
+<div [hidden]="isAdmin">
+  <button routerLink="/create" class="btn btn-primary">Add new crypto</button>
 </div>
 

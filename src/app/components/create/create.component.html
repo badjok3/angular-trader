@@ -1,0 +1,66 @@
+<div class="container">
+  <h1>Add New Crypto-Currency</h1>
+  <form (ngSubmit)="createCrypto()" #cryptoForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name"
+             required
+             [(ngModel)]="model.name"
+             name="name"
+             #name="ngModel">
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Name is required!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="portfolioName">Portfolio Name</label>
+      <input type="text" class="form-control" id="portfolioName"
+             required
+             [(ngModel)]="model.portfolioName"
+             name="portfolioName"
+             #portfolioName="ngModel">
+      <div [hidden]="portfolioName.valid || portfolioName.pristine" class="alert alert-danger">
+        Portfolio Name is required!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="buy">Buy Price</label>
+      <input type="number" class="form-control" id="buy"
+             required
+             [(ngModel)]="model.buy"
+             name="buy"
+             #buy="ngModel">
+      <div [hidden]="buy.valid || buy.pristine" class="alert alert-danger">
+        Buy Price is required!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sell">Sell Price</label>
+      <input type="number" class="form-control" id="sell"
+             required
+             [(ngModel)]="model.sell"
+             name="sell"
+             #sell="ngModel">
+      <div [hidden]="sell.valid || sell.pristine" class="alert alert-danger">
+        Sell Price is required!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">Image URL</label>
+      <input type="text" class="form-control" id="imageUrl"
+             required
+             [(ngModel)]="model.imageUrl"
+             name="imageUrl"
+             #imageUrl="ngModel">
+      <div [hidden]="imageUrl.valid || imageUrl.pristine" class="alert alert-danger">
+        Image URL is required!
+      </div>
+    </div>
+
+    <button [disabled]="!cryptoForm.form.valid" type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

@@ -92,6 +92,13 @@ export class CryptoService {
       }
     });
   }
+  createCrypto(crypto) {
+    return this.http.post(baseUrl + '/appdata/' + appKey + '/cryptos', crypto, {
+      headers: {
+        'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+      }
+    });
+  }
   getUserProfile(username) {
     return this.http.get(baseUrl + `/user/` + appKey + `/?query={"username":"${username}"}`, {
       headers: {
