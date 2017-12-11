@@ -78,6 +78,13 @@ export class CryptoService {
       }
     });
   }
+  deletePost(id) {
+    return this.http.delete(baseUrl + '/appdata/' + appKey + '/posts/' + id, {
+      headers: {
+        'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+      }
+    });
+  }
   getComments(postId) {
     return this.http.get(baseUrl + '/appdata/' + appKey + `/comments?query={"postId": "${postId}"}`, {
       headers: {
@@ -87,6 +94,13 @@ export class CryptoService {
   }
   postComment(comment) {
     return this.http.post(baseUrl + '/appdata/' + appKey + '/comments', comment, {
+      headers: {
+        'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
+      }
+    });
+  }
+  deleteComment(id) {
+    return this.http.delete(baseUrl + '/appdata/' + appKey + '/comments/' + id, {
       headers: {
         'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
       }

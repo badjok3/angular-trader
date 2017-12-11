@@ -2,6 +2,7 @@
     <textarea [(ngModel)]="model.content" name="content" placeholder="What do you think about this crypto?"></textarea>
     <button type="submit" class="btn btn-success" (click)="createPost()">Post</button>
   <div *ngFor="let post of posts">
+    <button class="btn btn-danger" (click)="deletePost(post._id)">&#10007;</button>
     {{post.content}}
     By: {{post.author}}
     Date created: {{post.date | date}}

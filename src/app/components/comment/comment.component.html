@@ -2,6 +2,7 @@
   <textarea [(ngModel)]="model.content" name="content" placeholder="What do you think about this post?"></textarea>
   <button type="submit" class="btn btn-success" (click)="postComment()">Post</button>
   <div *ngFor="let comment of comments">
+    <button (click)="deleteComment(comment._id)">&#10007;</button>
     {{comment.content}}
     By: {{comment.author}}
     Date created: {{comment.date | date}}

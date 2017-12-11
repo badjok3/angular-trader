@@ -33,6 +33,15 @@ export class CommentComponent implements OnInit {
     this.model.postId = this.postId;
     this.cryptoService.postComment(this.model)
       .subscribe(data => {
+        // TODO: notify successful comment create
+        this.loadComments();
+      })
+  }
+
+  deleteComment(id) {
+    this.cryptoService.deleteComment(id)
+      .subscribe(data => {
+        // TODO: notify successful comment delete
         this.loadComments();
       })
   }

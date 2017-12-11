@@ -33,7 +33,15 @@ export class PostsComponent implements OnInit {
     this.model.cryptoId = this.cryptoId;
     this.cryptoService.postCryptoPost(this.model)
       .subscribe(data => {
-        // TODO: display new post without refreshing page
+        // TODO: display notification message
+        this.loadPosts();
+      })
+  }
+
+  deletePost(id) {
+    this.cryptoService.deletePost(id)
+      .subscribe(data => {
+        // TODO: display notification message
         this.loadPosts();
       })
   }
