@@ -1,15 +1,14 @@
 <nav *ngIf="!auth.isLoggedIn()" class="navbar navbar-expand-md navbar-dark bg-faded">
   <a class="navbar-brand" routerLink="/home">trade &#9818;</a>
-  <!--<a routerLink="/withdraw" routerLinkActive="active">Withdraw Funds</a>-->
-  <!--<a routerLink="/deposit" routerLinkActive="active">Deposit Funds</a>-->
   <a class="navbar-toggler-right navbar-brand" routerLink="/login">Login / Register</a>
 </nav>
 <nav *ngIf="auth.isLoggedIn()" class="navbar navbar-expand-md navbar-dark bg-faded">
   <a class="navbar-brand" routerLink="/home">trade &#9818;</a>
+  <a class="navbar-brand" routerLink="/all">all users &#9823;</a>
 
   <section class="navbar-toggler-right">
     <div class="wrapper-d">
-      <div id="dd" class="wrapper-dropdown-5" tabindex="1">{{user}}
+      <div id="dd" class="wrapper-dropdown-5">{{user}}
         <ul class="dropdown">
           <li><a routerLink="/profile/{{user}}"><i class="icon-user"></i>Profile</a></li>
           <li><a routerLink="/withdraw"><i class="icon-cog"></i>Withdraw Funds</a></li>

@@ -20,6 +20,7 @@ import { WithdrawComponent } from './components/withdraw/withdraw.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CreateComponent } from './components/create/create.component';
+import { AllComponent } from './components/all/all.component';
 
 // Services
 import { CryptoService } from './services/crypto.service';
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
   { path: 'profile/:username', component: ProfileComponent },
   { path: 'withdraw', canActivate: [ AuthGuard ], component: WithdrawComponent },
   { path: 'create', canActivate: [ AuthGuard ], component: CreateComponent },
+  { path: 'all', canActivate: [ AuthGuard ], component: AllComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -58,7 +60,8 @@ const appRoutes: Routes = [
     WithdrawComponent,
     PostsComponent,
     CommentComponent,
-    CreateComponent
+    CreateComponent,
+    AllComponent
   ],
   imports: [
     NgbModule,

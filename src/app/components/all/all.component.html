@@ -1,0 +1,10 @@
+<div *ngIf="allUsers">
+  <ul>
+    <li *ngFor="let user of allUsers">
+      <img src={{user.imageUrl}} alt="profilePic"/>
+      <span>{{user.username}}</span>
+      <span>{{user.email}}</span>
+      <button routerLink="/profile/{{user.username}}">Details &#10146;</button>
+    </li>
+  </ul>
+</div>
