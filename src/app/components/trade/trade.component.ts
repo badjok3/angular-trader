@@ -43,6 +43,9 @@ export class TradeComponent implements OnInit {
       .subscribe(currentUser => {
         this.userBalance = currentUser['available'];
 
+        if (this.userBalance < this.currentAmount) {
+          return;
+        }
         const diff = (this.crypto['sell'] * this.currentAmount) - (this.crypto['buy'] * this.currentAmount);
         const percent = diff / this.crypto['sell'] * 100.0;
         const profit = this.currentAmount * (percent / 100.0);

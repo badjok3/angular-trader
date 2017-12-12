@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -12,7 +12,7 @@ import { NotificationsService } from '../../services/notifications.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
-export class DetailsComponent implements OnInit, OnDestroy {
+export class DetailsComponent implements OnInit {
   crypto: CryptoModel;
   subscription: Subscription;
   notification: string;
@@ -30,10 +30,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadDetails();
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
   loadDetails(): void {
