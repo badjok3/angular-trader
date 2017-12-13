@@ -25,7 +25,6 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 // Services
 import { CryptoService } from './services/crypto.service';
 import { AuthorizationService } from './services/authorization.service';
-import { NotificationsService } from './services/notifications.service';
 
 // Gurads
 import { AuthGuard } from './guards/auth.guard.service';
@@ -75,7 +74,6 @@ const appRoutes: Routes = [
   providers: [
     CryptoService,
     AuthorizationService,
-    NotificationsService,
     AuthGuard
   ],
   exports: [ RouterModule ]

@@ -10,6 +10,7 @@
       <strong>Amount: </strong>{{trade.amount}}
       <strong>Units: </strong>{{trade.amount / trade.cryptoPrice}}
       <strong>Profit: </strong><span [style.color]="trade.profit < 0 ? 'red' : 'green'">{{trade.profit}}</span>
+      <button class="btn btn-info" (click)="closeTrade(trade)">Close</button>
     </li>
   </ul>
   <strong>Available: </strong>{{user.available}}

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CryptoModel } from '../../models/crypto';
 
 import { CryptoService } from '../../services/crypto.service';
-import { NotificationsService } from '../../services/notifications.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-trade',
@@ -14,12 +14,11 @@ export class TradeComponent implements OnInit {
   crypto: CryptoModel;
   currentAmount = 0;
   userBalance = 0;
-  notification: string;
 
   constructor(
     private router: Router,
     private cryptoService: CryptoService,
-    private notificationsService: NotificationsService
+    private toastr: ToastsManager
   ) { }
 
   ngOnInit() {
@@ -64,7 +63,7 @@ export class TradeComponent implements OnInit {
 
         this.cryptoService.postTrade(trade, this.currentAmount, currentUser)
           .subscribe(data => {
-            this.notificationsService.notify(`Opened ${trade.cryptoName.toUpperCase()} trade at ${trade.currentPrice}`);
+            this.toastr.success(`Opened ${trade.cryptoName.toUpperCase()} at ${trade.currentPrice}`);
             this.router.navigate(['/details/' + this.crypto.name]);
           });
       });

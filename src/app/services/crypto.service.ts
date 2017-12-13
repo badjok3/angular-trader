@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 
-import { NotificationsService } from '../services/notifications.service';
-
 const baseUrl = 'https://baas.kinvey.com';
 const appKey = 'kid_SkgAkd-Wz';
 const appSecret = 'eeb099cc647c45a1984f5cc97d6b0ce6';
@@ -11,7 +9,7 @@ const appSecret = 'eeb099cc647c45a1984f5cc97d6b0ce6';
 @Injectable()
 export class CryptoService {
 
-  constructor(private http: HttpClient, private notificationService: NotificationsService) { }
+  constructor(private http: HttpClient) { }
 
   getAllCryptos(): Observable<any> {
     return this.http.get(baseUrl + '/appdata/' + appKey + '/cryptos', {

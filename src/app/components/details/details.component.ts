@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
 
 import { CryptoModel } from '../../models/crypto';
 
 import { CryptoService } from '../../services/crypto.service';
-import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-details',
@@ -14,19 +12,12 @@ import { NotificationsService } from '../../services/notifications.service';
 })
 export class DetailsComponent implements OnInit {
   crypto: CryptoModel;
-  subscription: Subscription;
   notification: string;
 
   constructor(
     private router: Router,
-    private cryptoService: CryptoService,
-    private notificationsService: NotificationsService
-  ) {
-    this.subscription = this.notificationsService.getNotification()
-      .subscribe(notification => {
-        this.notification = notification;
-      });
-  }
+    private cryptoService: CryptoService
+  ) { }
 
   ngOnInit() {
     this.loadDetails();
@@ -38,9 +29,5 @@ export class DetailsComponent implements OnInit {
       .subscribe(coin => {
         this.crypto = coin[0];
       });
-  }
-
-  hideNotification(): void {
-    this.notificationsService.clearNotification();
   }
 }

@@ -2,7 +2,6 @@ import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { CryptoService } from '../../services/crypto.service';
-import { NotificationsService } from '../../services/notifications.service';
 
 import { CryptoModel } from '../../models/crypto';
 
@@ -23,14 +22,13 @@ export class CreateComponent {
   constructor(
     private cryptoService: CryptoService,
     private router: Router,
-    private notificationsService: NotificationsService
 ) { }
 
   createCrypto() {
     this.cryptoService.createCrypto(this.model)
       .subscribe(data => {
         console.log(data);
-        this.notificationsService.notify('Crypto successfully created');
+        // TODO: NOTIFY
         this.router.navigate(['/home']);
       });
   }

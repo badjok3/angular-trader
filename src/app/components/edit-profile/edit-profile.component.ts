@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../../services/authorization.service';
 import { CryptoService } from '../../services/crypto.service';
 
-import { RegisterModel } from '../../models/register';
 import { Router } from '@angular/router';
 
 @Component({
