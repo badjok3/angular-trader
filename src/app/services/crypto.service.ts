@@ -41,9 +41,6 @@ export class CryptoService {
           headers: {
             'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
           }
-        }).subscribe(data => {
-          // TODO: notify deposit success
-          console.log(data);
         });
       });
   }
@@ -56,9 +53,6 @@ export class CryptoService {
           headers: {
             'Authorization': 'Kinvey ' + localStorage.getItem('authtoken')
           }
-        }).subscribe(data => {
-          // TODO: notify deposit success
-          console.log(data);
         });
       });
   }

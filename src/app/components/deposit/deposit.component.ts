@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CryptoService } from '../../services/crypto.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-deposit',
@@ -10,7 +11,11 @@ import { CryptoService } from '../../services/crypto.service';
 export class DepositComponent implements OnInit {
   public currentBalance: number;
   public deposit: number;
-  constructor(private cryptoService: CryptoService, private router: Router) { }
+  constructor(
+    private cryptoService: CryptoService,
+    private router: Router,
+    private toastr: ToastsManager
+  ) { }
 
   ngOnInit() {
     this.getBalance();
@@ -25,6 +30,7 @@ export class DepositComponent implements OnInit {
 
   makeDeposit(amount) {
     this.cryptoService.makeDeposit(amount);
+    this.toastr.success(`Succesfully deposited ${amount}$`)
     this.router.navigate(['/home']);
   }
 }

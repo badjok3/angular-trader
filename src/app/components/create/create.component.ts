@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import { CryptoService } from '../../services/crypto.service';
 
@@ -22,13 +23,13 @@ export class CreateComponent {
   constructor(
     private cryptoService: CryptoService,
     private router: Router,
+    private toastr: ToastsManager
 ) { }
 
   createCrypto() {
     this.cryptoService.createCrypto(this.model)
       .subscribe(data => {
-        console.log(data);
-        // TODO: NOTIFY
+        this.toastr.success(`Added ${this.model.name.toUpperCase()}`);
         this.router.navigate(['/home']);
       });
   }

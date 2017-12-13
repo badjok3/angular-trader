@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CryptoService } from '../../services/crypto.service';
 import { CommentModel } from '../../models/comment';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { AuthorizationService } from '../../services/authorization.service';
 
 @Component({
   selector: 'app-comment',
@@ -16,10 +18,15 @@ export class CommentComponent implements OnInit {
     date: new Date()
   };
   comments;
-  constructor(private cryptoService: CryptoService) { }
+  isAdmin;
+  constructor(
+    private cryptoService: CryptoService,
+    private toastr: ToastsManager,
+    private authService: AuthorizationService) { }
 
   ngOnInit() {
     this.loadComments();
+    this.checkAdmin();
   }
 
   loadComments() {
@@ -29,20 +36,27 @@ export class CommentComponent implements OnInit {
       });
   }
 
+  checkAdmin() {
+    this.cryptoService.getUser()
+      .subscribe(user => {
+        this.isAdmin = this.authService.isAdmin(user);
+      });
+  }
+
   postComment() {
     this.model.postId = this.postId;
     this.cryptoService.postComment(this.model)
       .subscribe(data => {
-        // TODO: notify successful comment create
+        this.toastr.success('Comment created');
         this.loadComments();
-      })
+      });
   }
 
   deleteComment(id) {
     this.cryptoService.deleteComment(id)
       .subscribe(data => {
-        // TODO: notify successful comment delete
+        this.toastr.success('Comment deleted');
         this.loadComments();
-      })
+      });
   }
 }
