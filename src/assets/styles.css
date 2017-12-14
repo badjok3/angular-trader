@@ -1,3 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./bootstrap.css";
+/*@import "./bootstrap.css";*/
+@import "./stylie.css";
+@import "./icon.css";
 @import "../../node_modules/ng2-toastr/ng2-toastr.css";

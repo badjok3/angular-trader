@@ -22,6 +22,8 @@ import { CommentComponent } from './components/comment/comment.component';
 import { CreateComponent } from './components/create/create.component';
 import { AllComponent } from './components/all/all.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { IntroComponent } from './components/intro/intro.component';
+
 // Services
 import { CryptoService } from './services/crypto.service';
 import { AuthorizationService } from './services/authorization.service';
@@ -30,7 +32,8 @@ import { AuthorizationService } from './services/authorization.service';
 import { AuthGuard } from './guards/auth.guard.service';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'intro', pathMatch: 'full' },
+  { path: 'intro', component: IntroComponent },
   { path: 'home', canActivate: [ AuthGuard ], component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -38,7 +41,7 @@ const appRoutes: Routes = [
   { path: 'details/:name', canActivate: [ AuthGuard ], component: DetailsComponent },
   { path: 'trade/:name', canActivate: [ AuthGuard ], component: TradeComponent },
   { path: 'deposit', canActivate: [ AuthGuard ], component: DepositComponent },
-  { path: 'profile/:username', component: ProfileComponent },
+  { path: 'profile/:username', canActivate: [ AuthGuard ], component: ProfileComponent },
   { path: 'withdraw', canActivate: [ AuthGuard ], component: WithdrawComponent },
   { path: 'create', canActivate: [ AuthGuard ], component: CreateComponent },
   { path: 'all', canActivate: [ AuthGuard ], component: AllComponent },
@@ -62,7 +65,8 @@ const appRoutes: Routes = [
     CommentComponent,
     CreateComponent,
     AllComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    IntroComponent
   ],
   imports: [
     NgbModule,

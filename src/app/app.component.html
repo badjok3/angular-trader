@@ -1,12 +1,8 @@
-<nav *ngIf="!auth.isLoggedIn()" class="navbar navbar-expand-md navbar-dark bg-faded">
-  <a class="navbar-brand" routerLink="/home">trade &#9818;</a>
-  <a class="navbar-toggler-right navbar-brand" routerLink="/login">Login / Register</a>
-</nav>
-<nav *ngIf="auth.isLoggedIn()" class="navbar navbar-expand-md navbar-dark bg-faded">
+<nav *ngIf="auth.isLoggedIn()" class="navbar navbar-default navbar-fixed-top">
   <a class="navbar-brand" routerLink="/home">trade &#9818;</a>
   <a class="navbar-brand" routerLink="/all">all users &#9823;</a>
 
-  <section class="navbar-toggler-right">
+  <section class="navbar-collapse collapse">
     <div class="wrapper-d">
       <div id="dd" class="wrapper-dropdown-5">{{getCurrentUser()}}
         <ul class="dropdown">
@@ -19,6 +15,6 @@
     </div>
   </section>
 </nav>
-<div class="content">
+<div>
   <router-outlet></router-outlet>
 </div>

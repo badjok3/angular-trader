@@ -1,0 +1,202 @@
+html {
+  font-family: Century;
+  background-color: #4b5257;
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1 {
+  margin: 2px;
+  color: crimson;
+  font-family: "Agency FB";
+}
+
+.form-horizontal {
+  margin-left: 35%;
+  margin-right: 35%;
+  marign-top: 5%;
+  padding: 4%;
+  border: 2px solid crimson;
+}
+
+.form-horizontal span {
+  display: block;
+  padding: 3%;
+  font-family: "Agency FB";
+  font-size: 24px;
+  color: crimson;
+}
+
+.form-horizontal span a {
+  color: #31b0d5;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: inline-block;
+  margin: 2px;
+  color: crimson;
+  font-family: "Agency FB";
+  font-size: 24px;
+}
+
+.form-control {
+  display: block;
+  width: 60%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #464a4c;
+  background-color: #fff;
+  background-image: none;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+}
+
+.btn-classic {
+  margin: 2%;
+  padding: 2%;
+  width: 5rem;
+  background-color: inherit;
+  color: crimson;
+  font-family: "Agency FB";
+  font-size: 24px;
+  border: solid 1px crimson;
+}
+
+.alert-danger {
+  width: 100%;
+  padding-left: 4%;
+  padding-top: 2%;
+  pading-bottom: 3%;
+  font-size: 16px;
+  font-color: #464a4c;
+  marign: 2%;
+  background-color: crimson;
+  border: 1px solid #d9534f;
+  border-radius: 20px;
+}
+
+.wrapper-d {
+  margin: 5px 0 0 0;
+  *zoom: 1;
+  font-weight: 400;
+}
+
+.wrapper-dropdown-5 {
+  /* Size & position */
+  position: relative;
+  width: 220px;
+  margin: 0 auto;
+  padding: 5px 15px;
+
+  /* Styles */
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.wrapper-dropdown-5:after { /* Little arrow */
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  margin-top: -3px;
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: #4cbeff transparent;
+}
+
+.wrapper-dropdown-5 .dropdown {
+  /* Size & position */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+
+  /* Styles */
+  background: #fff;
+  border-radius: 0 0 5px 5px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-top: none;
+  border-bottom: none;
+  list-style: none;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+
+  /* Hiding */
+  max-height: 0;
+  overflow: hidden;
+}
+
+.wrapper-dropdown-5 .dropdown li {
+  padding: 0 3px ;
+}
+
+.wrapper-dropdown-5 .dropdown li a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  padding: 10px 0;
+  transition: all 0.3s ease-out;
+  border-bottom: 1px solid #e6e8ea;
+}
+
+.wrapper-dropdown-5 .dropdown li:last-of-type a {
+  border: none;
+}
+
+.wrapper-dropdown-5 .dropdown li i {
+  margin-right: 1px;
+  color: inherit;
+  vertical-align: middle;
+}
+
+/* Hover state */
+
+.wrapper-dropdown-5 .dropdown li:hover a {
+  color: #57a9d9;
+}
+
+/* Active state */
+
+.wrapper-dropdown-5:hover {
+  border-radius: 5px 5px 0 0;
+  background: #4cbeff;
+  box-shadow: none;
+  border-bottom: none;
+  color: white;
+}
+
+.wrapper-dropdown-5:hover:after {
+  border-color: #82d1ff transparent;
+  display: block;
+}
+
+.wrapper-dropdown-5:hover .dropdown {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  max-height: 400px;
+}

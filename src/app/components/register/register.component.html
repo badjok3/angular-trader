@@ -1,6 +1,6 @@
 <div class="container">
-  <h2>Register</h2>
-  <form (ngSubmit)="userRegister()" #registerForm="ngForm">
+  <h1>Register</h1>
+  <form (ngSubmit)="userRegister()" #registerForm="ngForm" class="form-horizontal">
     <div class="form-group">
       <label for="email">Email</label>
       <input type="text" class="form-control" id="email"
@@ -38,12 +38,6 @@
       </div>
     </div>
 
-    <button [disabled]="!registerForm.form.valid" type="submit" class="btn btn-success">Submit</button>
+    <button [disabled]="!registerForm.form.valid" type="submit" class="btn-classic">Register</button>
   </form>
-  <div *ngIf="registerSuccess" class="alert alert-success">
-    Successfully Registered {{registeredUser}}!
-  </div>
-  <div *ngIf="registerFail" class="alert alert-danger">
-    User already exists!
-  </div>
 </div>

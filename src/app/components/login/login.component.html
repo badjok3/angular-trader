@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Login</h1>
-  <form (ngSubmit)="login()" #loginForm="ngForm">
+  <form (ngSubmit)="login()" #loginForm="ngForm" class="form-horizontal">
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" class="form-control" id="username"
@@ -25,10 +25,7 @@
       </div>
     </div>
 
-    <button [disabled]="!loginForm.form.valid" type="submit" class="btn btn-success">Submit</button>
-    <button routerLink="/register" class="btn btn-primary btn-right">Register</button>
+    <button [disabled]="!loginForm.form.valid" type="submit" class="btn-classic">Log in</button>
+    <span>Don't have an account? <a routerLink="/register">Sign up!</a></span>
   </form>
-  <div *ngIf="loginFail" class="alert alert-danger">
-    Failed Login!
-  </div>
 </div>

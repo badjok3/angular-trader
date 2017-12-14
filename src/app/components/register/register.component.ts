@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthorizationService } from '../../services/authorization.service';
 import { Router } from '@angular/router';
 import { RegisterModel } from '../../models/register';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-register',
@@ -18,29 +19,25 @@ export class RegisterComponent {
     allocated: 0,
     imageUrl: 'https://cdn2.f-cdn.com/ppic/85814928/logo/24833000/Cri6V/profile_logo_.png'
   };
-  public registeredUser: string;
-  public registerSuccess: boolean;
-  public registerFail: boolean;
 
-  constructor(private auth: AuthorizationService, private router: Router) {
-  }
+  constructor(
+    private auth: AuthorizationService,
+    private router: Router,
+    private toastr: ToastsManager
+  ) {}
 
   userRegister() {
     this.auth.register(this.model)
       .subscribe(data => {
-          this.successfulRegister(data);
+          this.toastr.success(`Successfully registered ${data['username']}`);
+          this.router.navigate(['/login'])
         },
         err => {
-          this.registerFail = true;
+          this.toastr.error('Register failed')
         });
   }
 
   get diagnostics(): string {
     return JSON.stringify(this.model);
-  }
-
-  successfulRegister(data): void {
-    this.registerSuccess = true;
-    this.registeredUser = data['username'];
   }
 }
