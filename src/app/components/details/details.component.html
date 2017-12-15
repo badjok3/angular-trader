@@ -3,17 +3,16 @@
 </div>
 <div class="details" *ngIf="crypto">
   <img src={{crypto.imageUrl}} alt="crypto icon">
-  <strong>{{crypto.name}}</strong>|<span>{{crypto.portfolioName}}</span>
+  <div class="title">{{crypto.name}}<span>{{crypto.portfolioName}}</span></div>
   <div class="crypto-trade">
     <a routerLink="/trade/{{crypto.name}}">
-      <span>BUY</span>{{crypto.buy}}
+      <span>Buy: </span>{{crypto.buy}}
     </a>
   </div>
   <div class="crypto-trade">
     <a routerLink="/trade/{{crypto.name}}">
-      <span>SELL</span>{{crypto.sell}}
+      <span>Sell: </span>{{crypto.sell}}
     </a>
   </div>
-  <button class="btn btn-primary">Trade</button>
   <app-posts [cryptoId]="crypto._id"></app-posts>
 </div>

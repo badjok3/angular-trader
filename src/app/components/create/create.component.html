@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Add New Crypto-Currency</h1>
-  <form (ngSubmit)="createCrypto()" #cryptoForm="ngForm">
+  <form (ngSubmit)="createCrypto()" #cryptoForm="ngForm" class="form-horizontal">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name"
@@ -61,6 +61,6 @@
       </div>
     </div>
 
-    <button [disabled]="!cryptoForm.form.valid" type="submit" class="btn btn-success">Submit</button>
+    <button [disabled]="!cryptoForm.form.valid" type="submit" class="btn-classic">Add</button>
   </form>
 </div>

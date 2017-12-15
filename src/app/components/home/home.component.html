@@ -4,17 +4,16 @@
 <div class="crypto-content" *ngFor="let crypto of cryptos">
   <a routerLink="/details/{{crypto.name}}">
     <img src={{crypto.imageUrl}} class="crypto-img">
+
+  <div class="crypto-name"><strong>{{crypto.name | uppercase}}</strong></div>
+  <div class="crypto-name">{{crypto.portfolioName}}</div>
   </a>
-  <span class="crypto-name"><strong>{{crypto.name | uppercase}}</strong></span>
-  <span class="crypto-name">{{crypto.portfolioName}}</span>
-  <a routerLink="/trade/{{crypto.name}}">
-    <span class="crypto-price"><button>S</button>{{crypto.sell}}</span>
-  </a>
-  <a routerLink="/trade/{{crypto.name}}">
-    <span class="crypto-price"><button>B</button>{{crypto.buy}}</span>
+  <a routerLink="/trade/{{crypto.name}}" class="crypto-price">
+    <span><button>B</button>{{crypto.buy}}</span>
+    <span><button>S</button>{{crypto.sell}}</span>
   </a>
 </div>
 <div [hidden]="!isAdmin">
-  <button routerLink="/create" class="btn btn-primary">Add new crypto-currency</button>
+  <button routerLink="/create" class="btn-crypto">Add new crypto-currency</button>
 </div>
 

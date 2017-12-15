@@ -22,7 +22,6 @@ import { CommentComponent } from './components/comment/comment.component';
 import { CreateComponent } from './components/create/create.component';
 import { AllComponent } from './components/all/all.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { IntroComponent } from './components/intro/intro.component';
 
 // Services
 import { CryptoService } from './services/crypto.service';
@@ -32,8 +31,7 @@ import { AuthorizationService } from './services/authorization.service';
 import { AuthGuard } from './guards/auth.guard.service';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'intro', pathMatch: 'full' },
-  { path: 'intro', component: IntroComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', canActivate: [ AuthGuard ], component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -66,7 +64,6 @@ const appRoutes: Routes = [
     CreateComponent,
     AllComponent,
     EditProfileComponent,
-    IntroComponent
   ],
   imports: [
     NgbModule,

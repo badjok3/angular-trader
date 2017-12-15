@@ -1,20 +1,20 @@
 <div class="profile" *ngIf="user">
   <img src={{user.imageUrl}} alt="profileImg"/>
-  <span>{{user.username}}</span>
-  <button *ngIf="canEdit" routerLink="/edit/{{user.username}}">&#9998;</button>
-  <ul>
-    <li *ngFor="let trade of user.trades">
+  <h1>{{user.username}}</h1>
+  <button *ngIf="canEdit" routerLink="/edit/{{user.username}}" class="btn-close">&#9998;</button>
+    <div *ngFor="let trade of user.trades" class="crypto-content">
       <img style="max-width: 70px" src={{trade.cryptoImg}}/>
       <strong>{{trade.cryptoName | uppercase}}</strong>
       <strong>Bought at: </strong>{{trade.cryptoPrice}}
       <strong>Amount: </strong>{{trade.amount}}
       <strong>Units: </strong>{{trade.amount / trade.cryptoPrice}}
       <strong>Profit: </strong><span [style.color]="trade.profit < 0 ? 'red' : 'green'">{{trade.profit}}</span>
-      <button class="btn btn-info" (click)="closeTrade(trade)">Close</button>
-    </li>
-  </ul>
-  <strong>Available: </strong>{{user.available}}
-  <strong>Allocated: </strong>{{user.allocated}}
-  <strong>Profit: </strong><span [style.color]="profit < 0 ? 'red' : 'green'">{{profit}}</span>
-  <strong>Equity: </strong>{{user.available + user.allocated + profit}}
+      <button class="btn-close" (click)="closeTrade(trade)" *ngIf="canEdit">Close</button>
+    </div>
+  <div class="crypto-profile">
+    <strong>Available: </strong>{{user.available}}
+    <strong>Allocated: </strong>{{user.allocated}}
+    <strong>Profit: </strong><span [style.color]="profit < 0 ? 'red' : 'green'">{{profit}}</span>
+    <strong>Equity: </strong>{{user.available + user.allocated + profit}}
+  </div>
 </div>

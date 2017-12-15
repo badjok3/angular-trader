@@ -29,8 +29,14 @@ export class DepositComponent implements OnInit {
   }
 
   makeDeposit(amount) {
-    this.cryptoService.makeDeposit(amount);
-    this.toastr.success(`Succesfully deposited ${amount}$`)
-    this.router.navigate(['/home']);
+    this.cryptoService.getUser()
+      .subscribe(user => {
+        user['available'] = user['available'] + this.deposit;
+        this.cryptoService.updateUser(user)
+          .subscribe(data => {
+            this.toastr.success(`Succesfully deposited ${amount}$`)
+            this.router.navigate(['/home']);
+          })
+      })
   }
 }

@@ -34,8 +34,14 @@ export class WithdrawComponent implements OnInit {
       return;
     }
 
-    this.cryptoService.makeWithdraw(this.withdraw);
-    this.toastr.success(`Successfully withdrew ${this.withdraw}$`);
-    this.router.navigate(['/home']);
+    this.cryptoService.getUser()
+      .subscribe(user => {
+          user['available'] = user['available'] - this.withdraw;
+          this.cryptoService.updateUser(user)
+            .subscribe(data => {
+              this.toastr.success(`Successfully withdrew ${this.withdraw}$`);
+              this.router.navigate(['/home']);
+            })
+      })
   }
 }

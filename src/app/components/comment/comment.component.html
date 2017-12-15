@@ -1,10 +1,28 @@
 <div class="comments">
   <textarea [(ngModel)]="model.content" name="content" placeholder="What do you think about this post?"></textarea>
-  <button type="submit" class="btn btn-success" (click)="postComment()">Post</button>
+  <button type="submit" class="btn-close" (click)="postComment()">Comment</button>
+
   <div *ngFor="let comment of comments">
-    <button (click)="deleteComment(comment._id)" *ngIf="isAdmin">&#10007;</button>
-    {{comment.content}}
-    By: {{comment.author}}
-    Date created: {{comment.date | date}}
+    <div class="row">
+      <div class="col-sm-1">
+        <div class="thumbnail">
+          <img class="img-thumbnail" src={{authorImg}}>
+        </div>
+      </div>
+
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong>{{comment.author}}</strong> <span class="text-muted">commented on {{comment.date | date}}</span>
+            <button class="btn-delete" (click)="deleteComment(comment._id)" *ngIf="isAdmin">&#10007;</button>
+          </div>
+          <div class="panel-body">
+            {{comment.content}}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+

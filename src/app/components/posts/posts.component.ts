@@ -44,9 +44,10 @@ export class PostsComponent implements OnInit {
     this.model.cryptoId = this.cryptoId;
     this.cryptoService.postCryptoPost(this.model)
       .subscribe(data => {
-        this.toastr.success('Post created')
+        this.toastr.success('Post created');
         this.loadPosts();
-      })
+        this.model.content = '';
+      });
   }
 
   deletePost(id) {

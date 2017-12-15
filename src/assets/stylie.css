@@ -75,6 +75,42 @@ h1 {
   border: solid 1px crimson;
 }
 
+.btn-delete {
+  padding: 1%;
+  float: right;
+  width: 3rem;
+  background-color: inherit;
+  color: crimson;
+  display: inline-block;
+  font-family: "Agency FB";
+  font-size: 24px;
+  border: solid 1px crimson;
+}
+
+
+.btn-crypto {
+  margin-left: 40%;
+  margin-top: 5px;
+  padding: 2%;
+  width: 15rem;
+  background-color: inherit;
+  color: crimson;
+  font-family: "Agency FB";
+  font-size: 24px;
+  border: solid 1px crimson;
+}
+
+.btn-close {
+  padding: 1%;
+  margin-bottom: 2%;
+  width: 10rem;
+  background-color: inherit;
+  color: crimson;
+  font-family: "Agency FB";
+  font-size: 20px;
+  border: solid 1px crimson;
+}
+
 .alert-danger {
   width: 100%;
   padding-left: 4%;
@@ -99,6 +135,7 @@ h1 {
   position: relative;
   width: 220px;
   margin: 0 auto;
+  margin-left: 70%;
   padding: 5px 15px;
 
   /* Styles */
@@ -120,11 +157,11 @@ h1 {
   height: 0;
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 1px;
   margin-top: -3px;
   border-width: 6px 6px 0 6px;
   border-style: solid;
-  border-color: #4cbeff transparent;
+  border-color: crimson transparent;
 }
 
 .wrapper-dropdown-5 .dropdown {
@@ -178,25 +215,331 @@ h1 {
 /* Hover state */
 
 .wrapper-dropdown-5 .dropdown li:hover a {
-  color: #57a9d9;
+  color: crimson;
 }
 
 /* Active state */
 
 .wrapper-dropdown-5:hover {
   border-radius: 5px 5px 0 0;
-  background: #4cbeff;
+  background: crimson;
   box-shadow: none;
   border-bottom: none;
   color: white;
 }
 
 .wrapper-dropdown-5:hover:after {
-  border-color: #82d1ff transparent;
+  border-color: crimson transparent;
   display: block;
 }
 
 .wrapper-dropdown-5:hover .dropdown {
   border-bottom: 1px solid rgba(0,0,0,0.2);
   max-height: 400px;
+}
+
+.navbar {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: crimson;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+  color: #31b0d5;
+  text-decoration: none;
+}
+
+.navbar-brand:hover {
+ color: white;
+}
+
+.navbar-toggleable-md {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.crypto-content {
+  border: 1px crimson solid;
+  align-content: center;
+}
+
+.crypto-profile {
+  color: crimson;
+  align-content: center;
+}
+
+.crypto-profile strong {
+  color: #31b0d5;
+  align-content: center;
+}
+.crypto-content a {
+  text-decoration: none;
+}
+
+.crypto-name {
+  color: crimson;
+  font-size: 20px;
+  display: inline-block;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  margin-right: 1rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+.crypto-portfolio {
+  color: crimson;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.crypto-content img {
+  max-width: 70px;
+}
+
+.crypto-price {
+  border: 1px solid crimson;
+  text-decoration-color: white;
+  display: inline-block;
+  float: right;
+  margin-top: 2rem;
+  padding-bottom: .25rem;
+  font-size: 1.25rem;
+}
+
+.crypto-content a span button {
+  color: white;
+  background-color: gray;
+}
+
+.crypto-content a span {
+  color: white;
+}
+
+.card {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: inline-block;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin: 2%
+}
+
+.card-img-top {
+  border-top-right-radius: calc(0.25rem - 1px);
+  border-top-left-radius: calc(0.25rem - 1px);
+}
+
+.card-title {
+  margin-bottom: 0.75rem;
+}
+
+.card-subtitle {
+  margin-top: -0.375rem;
+  margin-bottom: 0;
+}
+
+.crypto-content strong {
+  color: crimson;
+}
+
+.details {
+
+}
+
+.details img {
+  max-width: 200px;
+}
+
+.title {
+  margin: 2px;
+  font-size: 27px;
+  color: crimson;
+  font-family: "Agency FB";
+}
+
+.title span {
+  margin-left: 1%;
+  font-size: 22px;
+  font-style: italic;
+}
+
+.crypto-trade {
+  border: 1px solid crimson;
+  width: 12%;
+}
+
+.crypto-trade a {
+  text-decoration: none;
+  color: #31b0d5;
+}
+
+.thumbnail {
+  padding:0px;
+}
+.panel {
+  position:relative;
+  color: crimson;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+  position:absolute;
+  top:11px;left:-16px;
+  right:100%;
+  width:0;
+  height:0;
+  display:block;
+  content:" ";
+  border-color:transparent;
+  border-style:solid solid outset;
+  pointer-events:none;
+}
+.panel>.panel-heading:after{
+  border-width:7px;
+  color: crimson;
+  border-right-color:#f7f7f7;
+  margin-top:1px;
+  margin-left:2px;
+}
+.panel>.panel-heading:before{
+  border-right-color:#ddd;
+  border-width:8px;
+}
+.panel-body {
+  color: #31b0d5;
+  margin: 3%;
+}
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  margin-top: 3%;
+  margin-left: 20%;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  border: crimson 1px solid;
+}
+
+.row img{
+  max-width: 80px;
+}
+.col-sm-1 .col-sm-5{
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.img-thumbnail {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  max-width: 100%;
+  height: auto;
+}
+
+.comments textarea {
+  margin-left: 20%;
+  margin-top: 5%;
+  width: 50%;
+}
+.text-muted {
+  color: #31b0d5 !important;
+}
+
+.widget-area {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+  -o-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+  margin-top: 30px;
+  padding: 25px 30px;
+  position: relative;
+  margin-left: 10%;
+  width: 70%;
+  background-color: lightgray;
+}
+
+.post-content {
+  margin-left: 30%;
+  margin-top: 3%;
+  font-size: 30px;
+  color: crimson;
+  display: inline-block;
+}
+
+.post-by {
+  display: block;
+  margin-top: 3%;
+  font-size: 20px;
+  color: crimson;
+}
+
+.post-date {
+  display: inline-block;
+  font-size: 20px;
+  color: #31b0d5;
+}
+
+.status-upload textarea{
+  margin-top: 5%;
+  margin-left: 10%;
+  width: 70%;
+}
+
+.trade img {
+  max-width: 250px;
+}
+
+.trade-title {
+  font-size: 22px;
+  font-style: italic;
+  display: block;
+  color: crimson;
+  margin: 1%
 }

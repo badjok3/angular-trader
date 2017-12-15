@@ -1,11 +1,11 @@
-<div class="posts">
-    <textarea [(ngModel)]="model.content" name="content" placeholder="What do you think about this crypto?"></textarea>
-    <button type="submit" class="btn btn-success" (click)="createPost()">Post</button>
-  <div *ngFor="let post of posts">
-    <button class="btn btn-danger" (click)="deletePost(post._id)" *ngIf="isAdmin">&#10007;</button>
-    {{post.content}}
-    By: {{post.author}}
-    Date created: {{post.date | date}}
-    <app-comment [postId]="post._id"></app-comment>
-  </div>
+<div class="status-upload">
+  <textarea [(ngModel)]="model.content" name="content" placeholder="What do you think about this crypto?"></textarea>
+  <button type="submit" class="btn-close" (click)="createPost()">Post</button>
+</div>
+<div *ngFor="let post of posts" class="widget-area">
+  <button class="btn-delete" (click)="deletePost(post._id)" *ngIf="isAdmin">&#10007;</button>
+  <span class="post-content">{{post.content}}</span>
+  <span class="post-by">By: {{post.author}}</span>
+  <span class="post-date">Posted on: {{post.date | date}} </span>
+  <app-comment [postId]="post._id"></app-comment>
 </div>

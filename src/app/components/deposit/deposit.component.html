@@ -1,5 +1,4 @@
-<div class="deposit">
-  <span>Available Balance:</span>{{currentBalance}}
-  <input type="number" [(ngModel)]="deposit">
-  <button class="btn btn-primary" (click)="makeDeposit(deposit)">Deposit</button>
-</div>
+<h1>Available Balance: {{currentBalance}}$</h1>
+<input type="number" [(ngModel)]="deposit"><span class="title">$</span>
+<button class="btn-close" (click)="makeDeposit(deposit)">Deposit</button>
+

@@ -1,14 +1,14 @@
 <div class="trade" *ngIf="crypto">
   <img src={{crypto.imageUrl}} alt="crypto icon">
-  BUY <strong>{{crypto.name}}</strong>
-  <div class="crypto-trade">
-    <span>{{crypto.buy}}</span>
-  </div>
-  <strong>AMOUNT</strong>
+  <span class="trade-title">Trade: <strong>{{crypto.name}}</strong></span>
+    <span class="trade-title">Buy: {{crypto.buy}}</span>
+  <div class="trade-title">
+  <strong>Amount: </strong>
   <input type="number" [(ngModel)]="currentAmount" required />$
-  <button class="btn btn-primary" (click)="postTrade()">Trade</button>
+  </div>
+  <button class="btn-close" (click)="postTrade()">Trade</button>
   <div [hidden]="currentAmount <= userBalance" class="alert alert-danger">
       You need to deposit {{currentAmount - userBalance}}$ in order to make this trade!
-    <button class="btn btn-primary" routerLink="/deposit">Deposit Now</button>
+    <button class="btn-close" routerLink="/deposit">Deposit Now</button>
   </div>
 </div>

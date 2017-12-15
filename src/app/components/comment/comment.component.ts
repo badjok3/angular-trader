@@ -19,6 +19,7 @@ export class CommentComponent implements OnInit {
   };
   comments;
   isAdmin;
+  authorImg;
   constructor(
     private cryptoService: CryptoService,
     private toastr: ToastsManager,
@@ -40,6 +41,7 @@ export class CommentComponent implements OnInit {
     this.cryptoService.getUser()
       .subscribe(user => {
         this.isAdmin = this.authService.isAdmin(user);
+        this.authorImg = user['imageUrl'];
       });
   }
 
@@ -47,7 +49,8 @@ export class CommentComponent implements OnInit {
     this.model.postId = this.postId;
     this.cryptoService.postComment(this.model)
       .subscribe(data => {
-        this.toastr.success('Comment created');
+        this.toastr.success('Comment posted');
+        this.model.content = '';
         this.loadComments();
       });
   }

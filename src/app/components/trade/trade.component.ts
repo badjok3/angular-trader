@@ -61,7 +61,7 @@ export class TradeComponent implements OnInit {
         currentUser['available'] = currentUser['available'] - this.currentAmount;
         currentUser['allocated'] = +currentUser['allocated'] + this.currentAmount;
 
-        this.cryptoService.postTrade(trade, this.currentAmount, currentUser)
+        this.cryptoService.updateUser(currentUser)
           .subscribe(data => {
             this.toastr.success(`Opened ${trade.cryptoName.toUpperCase()} at ${trade.currentPrice}`);
             this.router.navigate(['/details/' + this.crypto.name]);
