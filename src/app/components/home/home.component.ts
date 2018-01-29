@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CryptoService } from '../../services/crypto.service';
 import { AuthorizationService } from '../../services/authorization.service';
+import { UserService } from '../../services/user.service';
 
 import { CryptoModel } from '../../models/crypto';
 
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
   isAdmin: boolean;
   constructor(
     private cryptoService: CryptoService,
+    private userService: UserService,
     private authService: AuthorizationService
   ) { }
 
@@ -26,13 +28,15 @@ export class HomeComponent implements OnInit {
   loadCryptos(): void {
     this.cryptoService.getAllCryptos()
       .subscribe(data => {
+
+    console.log('check');
         this.cryptos = data;
       });
   }
   adminCheck(): void {
-    this.cryptoService.getUser()
+    this.userService.getUser()
       .subscribe(user => {
-        this.isAdmin = this.authService.isAdmin(user)
+        this.isAdmin = this.authService.isAdmin(user);
       });
   }
 }

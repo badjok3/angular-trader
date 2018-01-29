@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { CryptoService } from '../../services/crypto.service';
-import { AuthorizationService } from "../../services/authorization.service";
+import { AuthorizationService } from '../../services/authorization.service';
 
 import { PostModel } from '../../models/post';
 
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { UserService } from '../../services/user.service';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-posts',
@@ -23,7 +25,8 @@ export class PostsComponent implements OnInit {
     date: new Date()
   };
   constructor(
-    private cryptoService: CryptoService,
+    private userService: UserService,
+    private postService: PostService,
     private toastr: ToastsManager,
     private authService: AuthorizationService
   ) { }
@@ -34,7 +37,7 @@ export class PostsComponent implements OnInit {
   }
 
   loadPosts() {
-    this.cryptoService.getCryptoPosts(this.cryptoId)
+    this.postService.getCryptoPosts(this.cryptoId)
       .subscribe(data => {
         this.posts = data;
       });
@@ -42,7 +45,7 @@ export class PostsComponent implements OnInit {
 
   createPost() {
     this.model.cryptoId = this.cryptoId;
-    this.cryptoService.postCryptoPost(this.model)
+    this.postService.postCryptoPost(this.model)
       .subscribe(data => {
         this.toastr.success('Post created');
         this.loadPosts();
@@ -51,7 +54,7 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(id) {
-    this.cryptoService.deletePost(id)
+    this.postService.deletePost(id)
       .subscribe(data => {
         this.toastr.success('Post deleted');
         this.loadPosts();
@@ -59,7 +62,7 @@ export class PostsComponent implements OnInit {
   }
 
   checkAdmin() {
-    this.cryptoService.getUser()
+    this.userService.getUser()
       .subscribe(user => {
         this.isAdmin = this.authService.isAdmin(user);
       });

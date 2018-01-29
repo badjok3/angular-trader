@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CryptoService } from '../../services/crypto.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-all',
@@ -8,16 +8,16 @@ import { CryptoService } from '../../services/crypto.service';
 })
 export class AllComponent implements OnInit {
   allUsers;
-  constructor(private cryptoService: CryptoService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.loadUsers();
   }
 
   loadUsers() {
-    this.cryptoService.getAllUsers()
+    this.userService.getAllUsers()
       .subscribe(users => {
         this.allUsers = users;
-      })
+      });
   }
 }

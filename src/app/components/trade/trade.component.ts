@@ -4,6 +4,7 @@ import { CryptoModel } from '../../models/crypto';
 
 import { CryptoService } from '../../services/crypto.service';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-trade',
@@ -18,6 +19,7 @@ export class TradeComponent implements OnInit {
   constructor(
     private router: Router,
     private cryptoService: CryptoService,
+    private userService: UserService,
     private toastr: ToastsManager
   ) { }
 
@@ -30,7 +32,7 @@ export class TradeComponent implements OnInit {
     this.cryptoService.getCryptoDetails(currentCrypto)
       .subscribe(coin => {
         this.crypto = coin[0];
-        this.cryptoService.getUser()
+        this.userService.getUser()
           .subscribe(currentUser => {
             this.userBalance = currentUser['available'];
           });
@@ -38,7 +40,7 @@ export class TradeComponent implements OnInit {
   }
 
   postTrade(): void {
-    this.cryptoService.getUser()
+    this.userService.getUser()
       .subscribe(currentUser => {
         this.userBalance = currentUser['available'];
 
@@ -61,7 +63,7 @@ export class TradeComponent implements OnInit {
         currentUser['available'] = currentUser['available'] - this.currentAmount;
         currentUser['allocated'] = +currentUser['allocated'] + this.currentAmount;
 
-        this.cryptoService.updateUser(currentUser)
+        this.userService.updateUser(currentUser)
           .subscribe(data => {
             this.toastr.success(`Opened ${trade.cryptoName.toUpperCase()} at ${trade.currentPrice}`);
             this.router.navigate(['/details/' + this.crypto.name]);

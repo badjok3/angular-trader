@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthorizationService } from '../../services/authorization.service';
-import { CryptoService } from '../../services/crypto.service';
 
 import { Router } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -22,7 +22,7 @@ export class EditProfileComponent implements OnInit {
   constructor(
     private auth: AuthorizationService,
     private router: Router,
-    private cryptoService: CryptoService,
+    private userService: UserService,
     private toastr: ToastsManager
   ) { }
 
@@ -31,14 +31,14 @@ export class EditProfileComponent implements OnInit {
   }
 
   loadUser() {
-    this.cryptoService.getUser()
+    this.userService.getUser()
       .subscribe(user => {
         this.model = user;
       });
   }
 
   updateUser() {
-    this.cryptoService.updateUser(this.model)
+    this.userService.updateUser(this.model)
       .subscribe(user => {
         this.toastr.success(`Successfully updated ${user['username']}`)
         setTimeout(() => this.toastr.success('Please re-log to see your changes.'), 500);

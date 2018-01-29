@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CryptoService } from '../../services/crypto.service';
 import { Router } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-withdraw',
@@ -13,7 +13,7 @@ export class WithdrawComponent implements OnInit {
   public withdraw: number;
   public unsuccessfulWithdraw: boolean;
   constructor(
-    private cryptoService: CryptoService,
+    private userService: UserService,
     private router: Router,
     private toastr: ToastsManager) { }
 
@@ -22,7 +22,7 @@ export class WithdrawComponent implements OnInit {
   }
 
   getBalance() {
-    this.cryptoService.getUser()
+    this.userService.getUser()
       .subscribe(user => {
         this.availableBalance = user['available'];
       });
@@ -34,14 +34,14 @@ export class WithdrawComponent implements OnInit {
       return;
     }
 
-    this.cryptoService.getUser()
+    this.userService.getUser()
       .subscribe(user => {
           user['available'] = user['available'] - this.withdraw;
-          this.cryptoService.updateUser(user)
+          this.userService.updateUser(user)
             .subscribe(data => {
               this.toastr.success(`Successfully withdrew ${this.withdraw}$`);
               this.router.navigate(['/home']);
-            })
-      })
+            });
+      });
   }
 }

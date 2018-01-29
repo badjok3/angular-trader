@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CryptoService } from '../../services/crypto.service';
 import { CommentModel } from '../../models/comment';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { AuthorizationService } from '../../services/authorization.service';
+import { UserService } from '../../services/user.service';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-comment',
@@ -21,7 +22,8 @@ export class CommentComponent implements OnInit {
   isAdmin;
   authorImg;
   constructor(
-    private cryptoService: CryptoService,
+    private userService: UserService,
+    private postService: PostService,
     private toastr: ToastsManager,
     private authService: AuthorizationService) { }
 
@@ -31,14 +33,14 @@ export class CommentComponent implements OnInit {
   }
 
   loadComments() {
-    this.cryptoService.getComments(this.postId)
+    this.postService.getComments(this.postId)
       .subscribe(data => {
         this.comments = data;
       });
   }
 
   checkAdmin() {
-    this.cryptoService.getUser()
+    this.userService.getUser()
       .subscribe(user => {
         this.isAdmin = this.authService.isAdmin(user);
         this.authorImg = user['imageUrl'];
@@ -47,7 +49,7 @@ export class CommentComponent implements OnInit {
 
   postComment() {
     this.model.postId = this.postId;
-    this.cryptoService.postComment(this.model)
+    this.postService.postComment(this.model)
       .subscribe(data => {
         this.toastr.success('Comment posted');
         this.model.content = '';
@@ -56,7 +58,7 @@ export class CommentComponent implements OnInit {
   }
 
   deleteComment(id) {
-    this.cryptoService.deleteComment(id)
+    this.postService.deleteComment(id)
       .subscribe(data => {
         this.toastr.success('Comment deleted');
         this.loadComments();
