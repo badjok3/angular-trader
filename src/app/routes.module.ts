@@ -18,6 +18,9 @@ import { CreateComponent } from './components/create/create.component';
 import { AllComponent } from './components/all/all.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { TradeComponent } from './components/trade/trade.component';
+import { DetailsComponent } from './components/details/details.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 // Services
 import { CryptoService } from './services/crypto.service';
@@ -35,7 +38,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'trade/:name', canActivate: [ AuthGuard ], component: TradeComponent },
-  { path: 'details/:name', loadChildren: 'app/modules/details/details.module#DetailsModule' },
+  { path: 'details/:name', canActivate: [ AuthGuard ], component: DetailsComponent },
   { path: 'deposit', canActivate: [ AuthGuard ], component: DepositComponent },
   { path: 'profile/:username', canActivate: [ AuthGuard ], component: ProfileComponent },
   { path: 'withdraw', canActivate: [ AuthGuard ], component: WithdrawComponent },
@@ -58,7 +61,10 @@ const appRoutes: Routes = [
     CreateComponent,
     AllComponent,
     EditProfileComponent,
-    TradeComponent
+    TradeComponent,
+    DetailsComponent,
+    PostsComponent,
+    CommentComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

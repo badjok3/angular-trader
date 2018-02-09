@@ -28,8 +28,6 @@ export class HomeComponent implements OnInit {
   loadCryptos(): void {
     this.cryptoService.getAllCryptos()
       .subscribe(data => {
-
-    console.log('check');
         this.cryptos = data;
       });
   }

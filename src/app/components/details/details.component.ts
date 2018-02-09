@@ -25,6 +25,7 @@ export class DetailsComponent implements OnInit {
 
   loadDetails(): void {
     const currentCrypto = this.router.url.substr(this.router.url.lastIndexOf('/') + 1, this.router.url.length);
+    
     this.cryptoService.getCryptoDetails(currentCrypto)
       .subscribe(coin => {
         this.crypto = coin[0];
