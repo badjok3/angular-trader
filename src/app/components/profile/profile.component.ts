@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
@@ -10,7 +10,7 @@ import { CryptoService } from '../../services/crypto.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit, DoCheck {
+export class ProfileComponent implements OnInit {
   public user: object;
   public profit = 0;
   public canEdit: boolean;
@@ -22,10 +22,6 @@ export class ProfileComponent implements OnInit, DoCheck {
   ) { }
 
   ngOnInit() {
-    this.loadUser();
-  }
-
-  ngDoCheck() {
     this.loadUser();
   }
 
