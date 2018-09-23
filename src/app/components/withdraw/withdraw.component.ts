@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class WithdrawComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private toastr: ToastsManager) { }
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getBalance();

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthorizationService } from '../../services/authorization.service';
 import { Router } from '@angular/router';
 import { RegisterModel } from '../../models/register';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -23,17 +23,17 @@ export class RegisterComponent {
   constructor(
     private auth: AuthorizationService,
     private router: Router,
-    private toastr: ToastsManager
+    private toastr: ToastrService
   ) {}
 
   userRegister() {
     this.auth.register(this.model)
       .subscribe(data => {
           this.toastr.success(`Successfully registered ${data['username']}`);
-          this.router.navigate(['/login'])
+          this.router.navigate(['/login']);
         },
         err => {
-          this.toastr.error('Register failed')
+          this.toastr.error('Register failed');
         });
   }
 

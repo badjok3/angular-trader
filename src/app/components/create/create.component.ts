@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 import { CryptoService } from '../../services/crypto.service';
 
@@ -23,7 +23,7 @@ export class CreateComponent {
   constructor(
     private cryptoService: CryptoService,
     private router: Router,
-    private toastr: ToastsManager
+    private toastr: ToastrService
 ) { }
 
   createCrypto() {

@@ -1,6 +1,6 @@
 import { Component, ViewContainerRef } from '@angular/core';
 import { AuthorizationService } from './services/authorization.service';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+// import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +10,11 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 export class AppComponent {
 
   constructor(private auth: AuthorizationService,
-              public toastr: ToastsManager,
+              // public toastr: ToastrService,
               vcr: ViewContainerRef) {
 
-    this.toastr.setRootViewContainerRef(vcr);
+    // this.toastr.setRootViewContainerRef(vcr);
   }
-
 
   getCurrentUser() {
     return localStorage.getItem('username');

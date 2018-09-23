@@ -5,7 +5,7 @@ import { AuthorizationService } from '../../services/authorization.service';
 
 import { PostModel } from '../../models/post';
 
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../services/user.service';
 import { PostService } from '../../services/post.service';
 
@@ -27,7 +27,7 @@ export class PostsComponent implements OnInit {
   constructor(
     private userService: UserService,
     private postService: PostService,
-    private toastr: ToastsManager,
+    private toastr: ToastrService,
     private authService: AuthorizationService
   ) { }
 

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../../services/authorization.service';
 
 import { Router } from '@angular/router';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class EditProfileComponent implements OnInit {
     private auth: AuthorizationService,
     private router: Router,
     private userService: UserService,
-    private toastr: ToastsManager
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentModel } from '../../models/comment';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { AuthorizationService } from '../../services/authorization.service';
 import { UserService } from '../../services/user.service';
 import { PostService } from '../../services/post.service';
@@ -24,7 +24,7 @@ export class CommentComponent implements OnInit {
   constructor(
     private userService: UserService,
     private postService: PostService,
-    private toastr: ToastsManager,
+    private toastr: ToastrService,
     private authService: AuthorizationService) { }
 
   ngOnInit() {

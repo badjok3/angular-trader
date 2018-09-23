@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LoginModel } from '../../models/login';
 import { AuthorizationService } from '../../services/authorization.service';
 import { Router } from '@angular/router';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-form',
@@ -16,7 +16,7 @@ export class LoginComponent {
   constructor(
     private authService: AuthorizationService,
     private router: Router,
-    private toastr: ToastsManager
+    private toastr: ToastrService
   ) {
     this.model = new LoginModel('', '');
     this.username = '';

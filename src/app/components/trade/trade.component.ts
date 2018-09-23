@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CryptoModel } from '../../models/crypto';
 
 import { CryptoService } from '../../services/crypto.service';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class TradeComponent implements OnInit {
     private router: Router,
     private cryptoService: CryptoService,
     private userService: UserService,
-    private toastr: ToastsManager
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
