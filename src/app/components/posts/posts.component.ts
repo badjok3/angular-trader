@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { CryptoService } from '../../services/crypto.service';
 import { AuthorizationService } from '../../services/authorization.service';
 
 import { PostModel } from '../../models/post';

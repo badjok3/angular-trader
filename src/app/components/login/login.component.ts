@@ -25,7 +25,7 @@ export class LoginComponent {
   login (): void {
     this.authService.login(this.model)
       .subscribe(
-        data => {
+       data => {
           this.toastr.success('Login successful');
           this.successfulLogin(data);
         },

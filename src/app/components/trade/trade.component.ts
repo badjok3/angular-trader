@@ -29,9 +29,10 @@ export class TradeComponent implements OnInit {
 
   loadDetails(): void {
     const currentCrypto = this.router.url.substr(this.router.url.lastIndexOf('/') + 1, this.router.url.length);
-    this.cryptoService.getCryptoDetails(currentCrypto)
+    this.cryptoService.getDetails(currentCrypto)
       .subscribe(coin => {
         this.crypto = coin[0];
+        this.cryptoService.loadPrice(this.crypto);
         this.userService.getUser()
           .subscribe(currentUser => {
             this.userBalance = currentUser['available'];
@@ -47,17 +48,13 @@ export class TradeComponent implements OnInit {
         if (this.userBalance < this.currentAmount) {
           return;
         }
-        const diff = (this.crypto['sell'] * this.currentAmount) - (this.crypto['buy'] * this.currentAmount);
-        const percent = diff / this.crypto['sell'] * 100.0;
-        const profit = this.currentAmount * (percent / 100.0);
         const trade = {
           'cryptoId': this.crypto['_id'],
           'cryptoImg': this.crypto.imageUrl,
           'cryptoName': this.crypto.name,
-          'cryptoPrice': this.crypto.buy,
-          'currentPrice': this.crypto.sell,
+          'cryptoPrice': this.crypto.sell,
           'amount': this.currentAmount,
-          'profit': profit,
+          'units': (this.currentAmount / this.crypto.sell).toFixed(2)
         };
         currentUser['trades'].push(trade);
         currentUser['available'] = currentUser['available'] - this.currentAmount;
@@ -65,7 +62,7 @@ export class TradeComponent implements OnInit {
 
         this.userService.updateUser(currentUser)
           .subscribe(data => {
-            this.toastr.success(`Opened ${trade.cryptoName.toUpperCase()} at ${trade.currentPrice}`);
+            this.toastr.success(`Opened ${trade.cryptoName.toUpperCase()} at ${trade.cryptoPrice}`);
             this.router.navigate(['/details/' + this.crypto.name]);
           });
       });

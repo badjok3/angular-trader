@@ -7,14 +7,14 @@
       <strong>{{trade.cryptoName | uppercase}}</strong>
       <strong>Bought at: </strong>{{trade.cryptoPrice}}
       <strong>Amount: </strong>{{trade.amount}}
-      <strong>Units: </strong>{{trade.amount / trade.cryptoPrice}}
-      <strong>Profit: </strong><span [style.color]="trade.profit < 0 ? 'red' : 'green'">{{trade.profit}}</span>
+      <strong>Units: </strong>{{trade.units}}
+      <strong>Profit: </strong><span [style.color]="trade.profit < 0 ? 'red' : 'green'">{{trade.profit}}</span> $
       <button class="btn-close" (click)="closeTrade(trade)" *ngIf="canEdit">Close</button>
     </div>
   <div class="crypto-profile">
     <strong>Available: </strong>{{user.available}}
     <strong>Allocated: </strong>{{user.allocated}}
-    <strong>Profit: </strong><span [style.color]="profit < 0 ? 'red' : 'green'">{{profit}}</span>
+    <strong>Profit: </strong><span [style.color]="profit < 0 ? 'red' : 'green'">{{profit.toFixed(2)}}</span>
     <strong>Equity: </strong>{{user.available + user.allocated + profit}}
   </div>
 </div>

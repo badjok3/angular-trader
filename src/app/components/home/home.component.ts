@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CryptoService } from '../../services/crypto.service';
-import { AuthorizationService } from '../../services/authorization.service';
-import { UserService } from '../../services/user.service';
-
 import { CryptoModel } from '../../models/crypto';
 
 @Component({
@@ -14,27 +11,30 @@ import { CryptoModel } from '../../models/crypto';
 export class HomeComponent implements OnInit {
   public cryptos: CryptoModel[];
   isAdmin: boolean;
+  timer;
   constructor(
     private cryptoService: CryptoService,
-    private userService: UserService,
-    private authService: AuthorizationService
-  ) { }
+  ) {
+    this.timer = setInterval(_ => {
+      this.loadAllPrices();
+    }, 5000);
+   }
 
   ngOnInit() {
     this.loadCryptos();
-    this.adminCheck();
+  }
+
+  loadAllPrices(): void {
+    for (const currentCoin of this.cryptos) {
+      this.cryptoService.loadPrice(currentCoin);
+    }
   }
 
   loadCryptos(): void {
-    this.cryptoService.getAllCryptos()
-      .subscribe(data => {
-        this.cryptos = data;
-      });
-  }
-  adminCheck(): void {
-    this.userService.getUser()
-      .subscribe(user => {
-        this.isAdmin = this.authService.isAdmin(user);
-      });
+     this.cryptoService.getAllCryptoData()
+       .subscribe(data => {
+         this.cryptos = data;
+         this.loadAllPrices();
+       });
   }
 }

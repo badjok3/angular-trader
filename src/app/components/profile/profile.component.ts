@@ -13,13 +13,19 @@ import { CryptoService } from '../../services/crypto.service';
 export class ProfileComponent implements OnInit {
   public user: object;
   public profit = 0;
+  timer;
   public canEdit: boolean;
   constructor(
     private router: Router,
     private userService: UserService,
     private cryptoService: CryptoService,
     private toastr: ToastrService
-  ) { }
+  ) {
+    this.timer = setInterval(_ => {
+      this.loadAllTrades();
+      console.log('hi');
+    }, 5000);
+   }
 
   ngOnInit() {
     this.loadUser();
@@ -33,17 +39,7 @@ export class ProfileComponent implements OnInit {
         currentUser = currentUser[0];
         this.user = currentUser;
         this.canEdit = (currentUser['username'] === localStorage.getItem('username'));
-        for (const trade of currentUser['trades']) {
-          this.cryptoService.getCryptoById(trade['cryptoId'])
-            .subscribe(currentCrypto => {
-                const diff = currentCrypto['sell'] - trade['cryptoPrice'];
-                const percent = diff / currentCrypto['sell'] * 100;
-                const profit = trade['amount'] * percent / 100;
-                trade['currentPrice'] = currentCrypto['sell'];
-                trade['profit'] = profit.toFixed(2);
-                this.profit = +(this.profit + profit).toFixed(2);
-            });
-        }
+        this.loadAllTrades();
       });
   }
 
@@ -63,5 +59,27 @@ export class ProfileComponent implements OnInit {
               this.loadUser();
             });
       });
+  }
+
+  loadTradeData(trade): void {
+    if (trade['cryptoName'].toLowerCase() === 'new') {
+      return;
+    }
+    this.cryptoService.getPrice(trade['cryptoName'])
+      .subscribe(price => {
+        trade['currentPrice'] = price[trade['cryptoName'].toUpperCase()]['USD'];
+        trade['profit'] = ((trade['units'] * trade['cryptoPrice']) - (trade['units'] * trade['currentPrice'])).toFixed(2);
+        if (isNaN(trade['profit'])) {
+          return;
+        }
+        this.profit += +trade['profit'];
+      });
+  }
+
+  loadAllTrades(): void {
+    this.profit = 0;
+    for (const trade of this.user['trades']) {
+      this.loadTradeData(trade);
+    }
   }
 }

@@ -14,7 +14,6 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { DepositComponent } from './components/deposit/deposit.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { WithdrawComponent } from './components/withdraw/withdraw.component';
-import { CreateComponent } from './components/create/create.component';
 import { AllComponent } from './components/all/all.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { TradeComponent } from './components/trade/trade.component';
@@ -42,7 +41,6 @@ const appRoutes: Routes = [
   { path: 'deposit', canActivate: [ AuthGuard ], component: DepositComponent },
   { path: 'profile/:username', canActivate: [ AuthGuard ], component: ProfileComponent },
   { path: 'withdraw', canActivate: [ AuthGuard ], component: WithdrawComponent },
-  { path: 'create', canActivate: [ AuthGuard ], component: CreateComponent },
   { path: 'all', canActivate: [ AuthGuard ], component: AllComponent },
   { path: 'edit/:username', canActivate: [ AuthGuard ], component: EditProfileComponent },
   { path: '**', component: PageNotFoundComponent }
@@ -58,7 +56,6 @@ const appRoutes: Routes = [
     DepositComponent,
     ProfileComponent,
     WithdrawComponent,
-    CreateComponent,
     AllComponent,
     EditProfileComponent,
     TradeComponent,
