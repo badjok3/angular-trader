@@ -39,6 +39,7 @@ export class CryptoService {
       const currentPrice = price[coin.name.toUpperCase()].USD;
       coin.buy = +(currentPrice + (currentPrice * +coin.spread)).toFixed(4);
       coin.sell = +(currentPrice - (currentPrice * +coin.spread)).toFixed(4);
+      coin.imageUrl = `../../assets/coins/${coin.name}.jpg`;
     });
   }
 }

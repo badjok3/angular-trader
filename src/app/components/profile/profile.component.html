@@ -3,7 +3,7 @@
   <h1>{{user.username}}</h1>
   <button *ngIf="canEdit" routerLink="/edit/{{user.username}}" class="btn-close">&#9998;</button>
     <div *ngFor="let trade of user.trades" class="crypto-content">
-      <img style="max-width: 70px" src={{trade.cryptoImg}}/>
+      <img style="max-width: 70px" src={{trade.image}}/>
       <strong>{{trade.cryptoName | uppercase}}</strong>
       <strong>Bought at: </strong>{{trade.cryptoPrice}}
       <strong>Amount: </strong>{{trade.amount}}

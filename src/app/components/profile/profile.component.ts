@@ -69,6 +69,7 @@ export class ProfileComponent implements OnInit {
       .subscribe(price => {
         trade['currentPrice'] = price[trade['cryptoName'].toUpperCase()]['USD'];
         trade['profit'] = ((trade['units'] * trade['cryptoPrice']) - (trade['units'] * trade['currentPrice'])).toFixed(2);
+        trade['image'] = `../../../assets/coins/${trade['cryptoName']}.jpg`;
         if (isNaN(trade['profit'])) {
           return;
         }
